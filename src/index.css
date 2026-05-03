@@ -314,26 +314,20 @@ ul {
     display: block;
 }
 
-.features-grid {
-    display: flex;
-    gap: 32px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 32px;
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0 60px 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
-.features-grid::-webkit-scrollbar {
-    height: 8px;
-}
-.features-grid::-webkit-scrollbar-track {
-    background: transparent;
-}
-.features-grid::-webkit-scrollbar-thumb {
-    background: rgba(46, 125, 79, 0.2);
-    border-radius: 10px;
-}
-.features-grid::-webkit-scrollbar-thumb:hover {
-    background: rgba(46, 125, 79, 0.4);
+.carousel-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    will-change: transform;
 }
 
 .feature-card {
@@ -345,9 +339,8 @@ ul {
     transition: transform 0.4s var(--spring-easing), box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
-    flex: 0 0 360px;
-    min-width: 300px;
-    scroll-snap-align: center;
+    flex: 0 0 320px;
+    min-width: 320px;
 }
 
 .feature-card::after {

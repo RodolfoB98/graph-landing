@@ -320,12 +320,20 @@ ul {
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding-bottom: 32px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 .features-grid::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+}
+.features-grid::-webkit-scrollbar-track {
+    background: transparent;
+}
+.features-grid::-webkit-scrollbar-thumb {
+    background: rgba(46, 125, 79, 0.2);
+    border-radius: 10px;
+}
+.features-grid::-webkit-scrollbar-thumb:hover {
+    background: rgba(46, 125, 79, 0.4);
 }
 
 .feature-card {
@@ -337,9 +345,9 @@ ul {
     transition: transform 0.4s var(--spring-easing), box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
-    flex: 0 0 calc(33.333% - 22px);
-    min-width: 320px;
-    scroll-snap-align: start;
+    flex: 0 0 360px;
+    min-width: 300px;
+    scroll-snap-align: center;
 }
 
 .feature-card::after {

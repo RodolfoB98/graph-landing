@@ -978,3 +978,174 @@ ul {
         justify-content: center;
     }
 }
+
+/* --- MOBILE OPTIMIZATION OVERRIDES --- */
+html, body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+    /* GENERAL RULES */
+    section {
+        padding: 60px 24px !important;
+    }
+    
+    .btn {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 1. NAVBAR */
+    .navbar .container {
+        padding: 0 24px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .logo-typography {
+        font-size: 14px !important;
+        letter-spacing: 0.2em !important;
+        white-space: nowrap;
+    }
+    .logo {
+        gap: 8px !important;
+    }
+    .logo svg {
+        width: 32px !important;
+        height: 32px !important;
+        flex-shrink: 0;
+    }
+    .navbar .btn {
+        font-size: 13px !important;
+        padding: 10px 16px !important;
+        min-height: 44px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    /* 2. HERO SECTION */
+    .hero {
+        padding-top: 120px !important;
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+    .hero .container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px !important;
+    }
+    .hero-content {
+        text-align: center;
+        align-items: center;
+        width: 100%;
+    }
+    .hero h1 {
+        font-size: clamp(2rem, 8vw, 3.5rem) !important;
+    }
+    .hero p {
+        font-size: 1rem !important;
+    }
+    .hero .hero-cta {
+        width: 100%;
+        flex-direction: column;
+    }
+    .hero .btn {
+        width: 100% !important;
+    }
+    .hero-visual {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    /* 3. SOCIAL PROOF */
+    .stats-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+    .stat-item {
+        padding: 24px 0 !important;
+        text-align: center;
+        border-right: none !important;
+        border-bottom: 1px solid var(--border-light);
+    }
+    .stat-item:last-child {
+        border-bottom: none;
+    }
+
+    /* 4. FEATURES CAROUSEL */
+    .feature-card {
+        flex: 0 0 280px !important;
+        min-width: 280px !important;
+        padding: 24px !important;
+    }
+
+    /* 5. PRICING */
+    .pricing-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+    .pricing-card {
+        width: 100% !important;
+        padding: 32px 24px !important;
+    }
+    .pricing-card.pro {
+        transform: none !important;
+    }
+    .pricing-card.pro:hover {
+        transform: translateY(-8px) !important;
+    }
+
+    /* 6. TARGET AUDIENCE */
+    .audience-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+
+    /* 8. FAQ */
+    .faq-item {
+        padding: 20px 0 !important;
+    }
+    .faq-question {
+        font-size: 1rem !important;
+    }
+    .faq-answer {
+        font-size: 1rem !important;
+    }
+
+    /* 9. CTA FINAL */
+    .cta-final {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
+    .cta-final h2 {
+        font-size: clamp(1.8rem, 6vw, 2.5rem) !important;
+    }
+    .cta-final .btn {
+        width: 100% !important;
+    }
+
+    /* 10. FOOTER */
+    .footer-content {
+        flex-direction: column !important;
+        gap: 32px !important;
+        align-items: center !important;
+        text-align: center;
+    }
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center !important;
+        gap: 16px !important;
+        font-size: 13px !important;
+    }
+    .footer-links a {
+        white-space: nowrap;
+    }
+}

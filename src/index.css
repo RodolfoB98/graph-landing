@@ -335,18 +335,18 @@ ul {
     display: flex;
     gap: 24px;
     width: max-content;
-    animation: marquee 30s linear infinite;
+    animation: marquee 45s linear infinite;
     -webkit-overflow-scrolling: touch;
-    will-change: transform;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+}
+
+.carousel-viewport:hover .carousel-track,
+.carousel-viewport:active .carousel-track {
+    animation-play-state: paused !important;
 }
 
 @keyframes marquee {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(-33.3333%); }
 }
 
 .feature-card {
@@ -1112,11 +1112,6 @@ html, body {
         gap: 16px !important;
         padding: 0 20px !important;
         -webkit-overflow-scrolling: touch !important;
-        will-change: transform !important;
-        transform: translateZ(0) !important;
-        -webkit-transform: translateZ(0) !important;
-        backface-visibility: hidden !important;
-        -webkit-backface-visibility: hidden !important;
     }
     .carousel-viewport {
         mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%) !important;

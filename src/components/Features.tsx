@@ -41,8 +41,6 @@ const featuresData = [
 export default function Features() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isTouched, setIsTouched] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
@@ -65,15 +63,9 @@ export default function Features() {
     setIsDragging(false);
   };
 
-  // Touch handlers (Mobile only - just pause/resume, no dragging)
-  const handleTouchStart = () => setIsTouched(true);
-  const handleTouchEnd = () => setIsTouched(false);
-
+  // Touch handlers on mobile were removed in favor of CSS :active
   // Duplicate array 3 times for seamless infinite scroll
   const duplicatedFeatures = [...featuresData, ...featuresData, ...featuresData];
-
-  // Combine pause conditions
-  const isPaused = isHovered || isDragging || isTouched;
 
   return (
     <section className="features">
@@ -98,20 +90,13 @@ export default function Features() {
       <div 
         className="carousel-viewport"
         ref={containerRef}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => { setIsHovered(false); handleMouseUpOrLeave(); }}
+        onMouseLeave={handleMouseUpOrLeave}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-        onTouchCancel={handleTouchEnd}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
-        <div 
-          className="carousel-track" 
-          style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
-        >
+        <div className="carousel-track">
           {duplicatedFeatures.map((item, index) => (
             <div className="feature-card" key={index}>
               <div className="feature-icon">

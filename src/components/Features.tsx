@@ -60,6 +60,13 @@ export default function Features() {
             <h3>Questionários Pré-Consulta</h3>
             <p>Envie formulários personalizados ao paciente antes da consulta e receba as respostas.</p>
           </div>
+          <div className="feature-card reveal active" style={{ transitionDelay: '0.3s' }}>
+            <div className="feature-icon">
+              <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" strokeLinecap="round" strokeLinejoin="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+            </div>
+            <h3>Portal do Paciente</h3>
+            <p>Gere um link exclusivo para seu paciente acessar o plano alimentar, exames, evolução, fotos e diário — sem precisar de login.</p>
+          </div>
         </div>
       </div>
     </section>

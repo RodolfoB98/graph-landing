@@ -315,9 +315,17 @@ ul {
 }
 
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 32px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 32px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.features-grid::-webkit-scrollbar {
+    display: none;
 }
 
 .feature-card {
@@ -329,6 +337,9 @@ ul {
     transition: transform 0.4s var(--spring-easing), box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
+    flex: 0 0 calc(33.333% - 22px);
+    min-width: 320px;
+    scroll-snap-align: start;
 }
 
 .feature-card::after {
@@ -878,5 +889,91 @@ ul {
     }
     .hero {
         padding-top: 140px;
+    }
+}
+
+
+/* Patient Portal Section */
+.patient-portal {
+    padding: 120px 0;
+    background-color: #f7f9f6;
+    border-top: 1px solid var(--border-light);
+}
+
+.patient-portal-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.patient-portal-content h2 {
+    font-size: 3rem;
+    margin-bottom: 24px;
+    line-height: 1.1;
+}
+
+.patient-portal-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 500px;
+}
+
+.patient-portal-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.patient-portal-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.patient-portal-bullets svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.patient-portal-mockup {
+    display: flex;
+    justify-content: center;
+}
+
+.phone-frame {
+    width: 375px;
+    height: 667px;
+    border-radius: 40px;
+    border: 2px solid #2e7d4f;
+    background-color: #0d1f17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #52a875;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    box-shadow: 0 40px 80px -20px rgba(46, 125, 79, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+@media (max-width: 992px) {
+    .patient-portal-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 60px;
+    }
+    .patient-portal-subtitle {
+        margin: 0 auto 40px auto;
+    }
+    .patient-portal-bullets li {
+        justify-content: center;
     }
 }

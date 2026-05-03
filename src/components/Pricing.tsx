@@ -19,7 +19,9 @@ export default function Pricing({ onOpenModal }: PricingProps) {
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Até 50 pacientes</li>
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Exames + relatórios</li>
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Questionários</li>
-              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> IA limitada (30-50 consultas)</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Agenda</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Portal do paciente</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> IA limitada (30 consultas/mês)</li>
             </ul>
             <button className="btn" onClick={onOpenModal}>Entrar na lista de espera</button>
           </div>
@@ -28,11 +30,13 @@ export default function Pricing({ onOpenModal }: PricingProps) {
             <h3 className="plan-name">Pro</h3>
             <div className="plan-price">R$ 119<span>/mês</span></div>
             <ul className="plan-features">
-              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Até 3 usuários</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> 1 usuário</li>
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Até 200 pacientes</li>
-              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> IA ampliada</li>
-              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Organização multi-usuário</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Exames + relatórios</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Questionários</li>
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Agenda completa</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Portal do paciente</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> IA ampliada (200 consultas/mês)</li>
             </ul>
             <button className="btn btn-primary" onClick={onOpenModal}>Entrar na lista de espera</button>
           </div>
@@ -43,6 +47,8 @@ export default function Pricing({ onOpenModal }: PricingProps) {
             <ul className="plan-features">
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Usuários ilimitados</li>
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Pacientes ilimitados</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Tudo do PRO</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Organização multi-usuário</li>
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> IA robusta (uso intensivo)</li>
               <li><svg viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg> Suporte prioritário</li>
             </ul>

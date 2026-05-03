@@ -48,15 +48,15 @@ export default function SocialProof() {
       <div className="container metrics-grid" ref={sectionRef}>
         <div className="metric-item reveal active">
           <span className="number" data-target="50">0</span>
-          <span className="label">+ biomarcadores catalogados</span>
+          <span className="label">biomarcadores catalogados</span>
         </div>
         <div className="metric-item reveal active" style={{ transitionDelay: '0.1s' }}>
           <span className="number" data-target="10">0</span>
-          <span className="label">Análises em segundos via IA</span>
+          <span className="label">segundos para análise</span>
         </div>
         <div className="metric-item reveal active" style={{ transitionDelay: '0.2s' }}>
           <span className="number" data-target="100">0</span>
-          <span className="label">% Extração automática de PDFs</span>
+          <span className="label">extração automática de PDFs</span>
         </div>
       </div>
     </section>

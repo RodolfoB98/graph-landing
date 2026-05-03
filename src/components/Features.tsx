@@ -41,8 +41,7 @@ const featuresData = [
 export default function Features() {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const requestRef = useRef<number>();
-  
+  const requestRef = useRef<number>(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(0);

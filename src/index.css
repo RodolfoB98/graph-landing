@@ -150,10 +150,10 @@ ul {
     color: var(--primary);
 }
 
-.nav-logo-icon {
-    width: 32px;
+.nav-logo-image {
     height: 32px;
-    flex-shrink: 0;
+    width: auto;
+    display: block;
 }
 
 /* Hero Section */
@@ -1140,8 +1140,8 @@ html, body {
         width: 100% !important;
     }
     .logo img {
-        width: 28px !important;
         height: 28px !important;
+        width: auto !important;
         flex-shrink: 0;
     }
     .logo-typography {

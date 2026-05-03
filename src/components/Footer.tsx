@@ -3,7 +3,9 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          <div className="footer-logo logo-typography">BG BodyGraph</div>
+          <div className="footer-logo">
+            <img src="/logo.png" alt="BG BodyGraph Logo" className="nav-logo-image" style={{ filter: 'grayscale(1) brightness(0.4)', opacity: 0.8 }} />
+          </div>
           <div className="footer-links">
             <a href="#">Funcionalidades</a>
             <a href="#precos">Preços</a>

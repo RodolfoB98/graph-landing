@@ -7,7 +7,6 @@ interface HeroProps {
 export default function Hero({ onOpenModal }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoDuration, setVideoDuration] = useState(0);
 
   useEffect(() => {
     const unlockVideo = () => {
@@ -67,12 +66,6 @@ export default function Hero({ onOpenModal }: HeroProps) {
     };
   }, [isVideoComplete]);
 
-  const handleLoadedMetadata = () => {
-    if (videoRef.current) {
-      setVideoDuration(videoRef.current.duration);
-    }
-  };
-
   const advanceVideo = (diff: number, sensitivity: number) => {
     if (isVideoComplete || !videoRef.current || !videoRef.current.duration) return;
     
@@ -131,7 +124,6 @@ export default function Hero({ onOpenModal }: HeroProps) {
           playsInline
           webkit-playsinline="true"
           preload="auto"
-          onLoadedMetadata={handleLoadedMetadata}
         />
         <div className="hero-overlay"></div>
         <div className="container hero-grid-center">

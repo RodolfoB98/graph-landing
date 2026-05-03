@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef } from 'react';
 
 const featuresData = [
   {
@@ -40,44 +40,13 @@ const featuresData = [
 
 export default function Features() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const requestRef = useRef<number>(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isTouched, setIsTouched] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  // Speed of auto-scroll (px per frame, ~60fps) -> approx 40px/s is 0.66
-  const scrollSpeed = 0.66;
-
-  const animate = useCallback(() => {
-    if (!containerRef.current || !trackRef.current) return;
-    
-    // Only auto-scroll if not dragging and not hovered
-    if (!isDragging && !isHovered) {
-      containerRef.current.scrollLeft += scrollSpeed;
-    }
-
-    // Infinite loop check
-    const trackWidth = trackRef.current.scrollWidth / 2; // Half width is the original set
-    if (containerRef.current.scrollLeft >= trackWidth) {
-      containerRef.current.scrollLeft -= trackWidth;
-    } else if (containerRef.current.scrollLeft <= 0) {
-      // If manually dragged past the left edge, wrap around
-      containerRef.current.scrollLeft += trackWidth;
-    }
-
-    requestRef.current = requestAnimationFrame(animate);
-  }, [isDragging, isHovered]);
-
-  useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
-    };
-  }, [animate]);
-
-  // Mouse drag handlers
+  // Mouse drag handlers (Desktop only)
   const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true);
     setStartX(e.pageX - (containerRef.current?.offsetLeft || 0));
@@ -96,22 +65,15 @@ export default function Features() {
     setIsDragging(false);
   };
 
-  // Touch drag handlers
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true);
-    setStartX(e.touches[0].clientX);
-  };
+  // Touch handlers (Mobile only - just pause/resume, no dragging)
+  const handleTouchStart = () => setIsTouched(true);
+  const handleTouchEnd = () => setIsTouched(false);
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !containerRef.current) return;
-    const currentX = e.touches[0].clientX;
-    const diff = currentX - startX;
-    containerRef.current.scrollLeft -= diff;
-    setStartX(currentX); // Update startX for smooth continuous drag
-  };
+  // Duplicate array 3 times for seamless infinite scroll
+  const duplicatedFeatures = [...featuresData, ...featuresData, ...featuresData];
 
-  // Duplicate array for seamless infinite scroll
-  const duplicatedFeatures = [...featuresData, ...featuresData];
+  // Combine pause conditions
+  const isPaused = isHovered || isDragging || isTouched;
 
   return (
     <section className="features">
@@ -142,11 +104,14 @@ export default function Features() {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
         onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleMouseUpOrLeave}
+        onTouchEnd={handleTouchEnd}
+        onTouchCancel={handleTouchEnd}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
-        <div className="carousel-track" ref={trackRef}>
+        <div 
+          className="carousel-track" 
+          style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
+        >
           {duplicatedFeatures.map((item, index) => (
             <div className="feature-card" key={index}>
               <div className="feature-icon">

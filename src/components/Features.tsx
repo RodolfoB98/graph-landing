@@ -99,15 +99,15 @@ export default function Features() {
   // Touch drag handlers
   const handleTouchStart = (e: React.TouchEvent) => {
     setIsDragging(true);
-    setStartX(e.touches[0].pageX - (containerRef.current?.offsetLeft || 0));
-    setScrollLeft(containerRef.current?.scrollLeft || 0);
+    setStartX(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!isDragging || !containerRef.current) return;
-    const x = e.touches[0].pageX - (containerRef.current.offsetLeft || 0);
-    const walk = (x - startX) * 1.5;
-    containerRef.current.scrollLeft = scrollLeft - walk;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    containerRef.current.scrollLeft -= diff;
+    setStartX(currentX); // Update startX for smooth continuous drag
   };
 
   // Duplicate array for seamless infinite scroll

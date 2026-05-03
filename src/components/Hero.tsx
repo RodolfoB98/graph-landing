@@ -34,6 +34,45 @@ export default function Hero({ onOpenModal }: HeroProps) {
     };
   }, []);
 
+  const [isMobile, setIsMobile] = useState(false);
+  const [isVideoComplete, setIsVideoComplete] = useState(false);
+  const touchStartY = useRef(0);
+  const currentProgress = useRef(0);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Mobile scroll locking and rewind logic
+  useEffect(() => {
+    if (!isMobile) return;
+
+    if (!isVideoComplete) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+
+    const handleScrollRewind = () => {
+      if (isVideoComplete && window.scrollY <= 10) {
+        setIsVideoComplete(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollRewind, { passive: true });
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      window.removeEventListener('scroll', handleScrollRewind);
+    };
+  }, [isMobile, isVideoComplete]);
+
+  // Handle native scroll scrubbing (active on desktop, or mobile when unlocked)
   useEffect(() => {
     let ticking = false;
 
@@ -47,13 +86,17 @@ export default function Hero({ onOpenModal }: HeroProps) {
             const scrollDistance = -top;
             const scrollableHeight = height - windowHeight;
 
-            if (scrollDistance >= 0 && scrollDistance <= scrollableHeight) {
-              const progress = scrollDistance / scrollableHeight;
-              videoRef.current.currentTime = progress * videoRef.current.duration;
-            } else if (scrollDistance < 0) {
-              videoRef.current.currentTime = 0;
-            } else if (scrollDistance > scrollableHeight) {
-              videoRef.current.currentTime = videoRef.current.duration;
+            // NATIVE SCROLL SCRUBBING
+            // On mobile, if locked, we ignore this and use touch events
+            if (!(isMobile && !isVideoComplete)) {
+              if (scrollDistance >= 0 && scrollDistance <= scrollableHeight) {
+                const progress = scrollDistance / scrollableHeight;
+                videoRef.current.currentTime = progress * videoRef.current.duration;
+              } else if (scrollDistance < 0) {
+                videoRef.current.currentTime = 0;
+              } else if (scrollDistance > scrollableHeight) {
+                videoRef.current.currentTime = videoRef.current.duration;
+              }
             }
           }
           ticking = false;
@@ -64,7 +107,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile, isVideoComplete]);
 
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
@@ -72,11 +115,51 @@ export default function Hero({ onOpenModal }: HeroProps) {
     }
   };
 
+  // Mobile synthetic touch scrub
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isMobile || isVideoComplete) return;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isMobile || isVideoComplete || !videoRef.current || !videoRef.current.duration) return;
+    
+    const touchY = e.touches[0].clientY;
+    const diff = touchStartY.current - touchY; 
+    const swipeSensitivity = 0.003; 
+    let newProgress = currentProgress.current + (diff * swipeSensitivity);
+    
+    newProgress = Math.max(0, Math.min(1, newProgress));
+    currentProgress.current = newProgress;
+    
+    window.requestAnimationFrame(() => {
+      if (videoRef.current) {
+        videoRef.current.currentTime = newProgress * videoRef.current.duration;
+        if (newProgress >= 0.98) {
+          setIsVideoComplete(true);
+          // Auto-scroll the page past the 400vh wrapper so the native handler takes over correctly
+          if (containerRef.current) {
+            const { height } = containerRef.current.getBoundingClientRect();
+            window.scrollTo(0, height - window.innerHeight + 20);
+          }
+        }
+      }
+    });
+    
+    touchStartY.current = touchY;
+  };
+
   const scrollSpeed = 100;
   const trackHeight = videoDuration > 0 ? `calc(100svh + ${videoDuration * scrollSpeed}px)` : '400svh';
 
   return (
-    <div className="hero-scroll-track" ref={containerRef} style={{ height: trackHeight }}>
+    <div 
+      className="hero-scroll-track" 
+      ref={containerRef} 
+      style={{ height: trackHeight }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+    >
       <header className="hero sticky-hero">
         <video
           ref={videoRef}
@@ -98,6 +181,14 @@ export default function Hero({ onOpenModal }: HeroProps) {
               <span className="hero-note">Sem cartão de crédito. Acesso antecipado com desconto.</span>
             </div>
           </div>
+        </div>
+
+        {/* Continue indicator for mobile swipe scrub */}
+        <div className={`hero-continue-indicator ${isMobile && isVideoComplete ? 'visible' : ''}`}>
+          <span>Continue</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </div>
       </header>
     </div>

@@ -1037,6 +1037,30 @@ html, body {
         background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.6) 100%) !important;
         z-index: 1 !important;
     }
+    
+    .hero-continue-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s ease;
+    }
+    .hero-continue-indicator.visible {
+        opacity: 1;
+    }
+    .hero-continue-indicator svg {
+        width: 24px;
+        height: 24px;
+        animation: bounce 2s infinite;
+    }
     .hero .container {
         position: relative !important;
         z-index: 2 !important;
@@ -1073,27 +1097,28 @@ html, body {
     /* 4. FEATURE CARDS */
     .carousel-track {
         display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
+        flex-direction: row !important;
+        width: max-content !important;
         gap: 16px !important;
-        padding: 0 !important;
+        padding: 0 20px !important;
         transform: none !important;
-    }
-    .carousel-track .feature-card:nth-child(n+8) {
-        display: none !important;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        will-change: transform;
     }
     .carousel-viewport {
-        mask-image: none !important;
-        -webkit-mask-image: none !important;
-        overflow: visible !important;
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%) !important;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%) !important;
+        overflow: hidden !important;
         padding: 0 !important;
+        touch-action: pan-x;
     }
     .feature-card {
-        width: 100% !important;
+        flex: 0 0 280px !important;
+        min-width: 280px !important;
+        width: 280px !important;
         max-width: none !important;
-        min-width: 0 !important;
         padding: 20px !important;
-        flex: none !important;
     }
     .feature-icon svg {
         width: 40px !important;
@@ -1259,4 +1284,10 @@ html, body {
         height: auto !important;
         aspect-ratio: 375 / 667;
     }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
 }

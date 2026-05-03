@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     question: "Posso usar em equipe?",
-    answer: "Sim. Nos planos PRO e CLÍNICA você pode convidar outros profissionais para a sua organização, com controle de papéis (admin, profissional, secretária) e compartilhamento de agendas."
+    answer: "Sim. No plano Clínica você pode convidar outros profissionais para a sua organização, com controle de papéis (admin, profissional, secretária) e compartilhamento de agendas."
   },
   {
     question: "O que é o agente IA biomédico?",
@@ -41,7 +41,7 @@ export default function FAQ() {
             <div key={index} className={`faq-item reveal active ${activeIndex === index ? 'active' : ''}`}>
               <button className="faq-question" onClick={() => toggleFAQ(index)}>
                 {faq.question}
-                <svg className="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5V19M5 12H19" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <svg className="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5V19M5 12H19" strokeLinecap="round" strokeLinejoin="round" /></svg>
               </button>
               <div className="faq-answer">
                 <p>{faq.answer}</p>

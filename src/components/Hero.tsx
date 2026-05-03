@@ -10,6 +10,31 @@ export default function Hero({ onOpenModal }: HeroProps) {
   const [videoDuration, setVideoDuration] = useState(0);
 
   useEffect(() => {
+    const unlockVideo = () => {
+      if (videoRef.current) {
+        // Force load and play/pause to unlock video on iOS
+        videoRef.current.load();
+        const playPromise = videoRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            if (videoRef.current) videoRef.current.pause();
+          }).catch(() => {});
+        }
+      }
+      window.removeEventListener('touchstart', unlockVideo);
+      window.removeEventListener('click', unlockVideo);
+    };
+
+    window.addEventListener('touchstart', unlockVideo, { once: true, passive: true });
+    window.addEventListener('click', unlockVideo, { once: true, passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', unlockVideo);
+      window.removeEventListener('click', unlockVideo);
+    };
+  }, []);
+
+  useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {
@@ -48,7 +73,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
   };
 
   const scrollSpeed = 100;
-  const trackHeight = videoDuration > 0 ? `calc(100vh + ${videoDuration * scrollSpeed}px)` : '400vh';
+  const trackHeight = videoDuration > 0 ? `calc(100svh + ${videoDuration * scrollSpeed}px)` : '400svh';
 
   return (
     <div className="hero-scroll-track" ref={containerRef} style={{ height: trackHeight }}>
@@ -59,6 +84,8 @@ export default function Hero({ onOpenModal }: HeroProps) {
           className="hero-video-bg"
           muted
           playsInline
+          webkit-playsinline="true"
+          preload="auto"
           onLoadedMetadata={handleLoadedMetadata}
         />
         <div className="hero-overlay"></div>

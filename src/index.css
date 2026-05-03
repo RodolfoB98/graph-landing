@@ -143,8 +143,17 @@ ul {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 1.5rem;
     color: var(--primary);
+}
+
+.nav-logo-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
 }
 
 /* Hero Section */
@@ -1130,7 +1139,7 @@ html, body {
         justify-content: space-between !important;
         width: 100% !important;
     }
-    .logo svg {
+    .logo img {
         width: 28px !important;
         height: 28px !important;
         flex-shrink: 0;

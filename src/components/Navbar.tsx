@@ -19,7 +19,10 @@ export default function Navbar({ onOpenModal }: NavbarProps) {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="container nav-content">
-        <a href="#" className="logo logo-typography">BG BodyGraph</a>
+        <a href="#" className="logo">
+          <img src="/favicon.svg" alt="Logo" className="nav-logo-icon" />
+          <span className="logo-typography">BG BodyGraph</span>
+        </a>
         <button className="btn btn-primary" onClick={onOpenModal}>Lista de espera</button>
       </div>
     </nav>

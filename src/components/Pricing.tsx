@@ -25,7 +25,6 @@ export default function Pricing({ onOpenModal }: PricingProps) {
           </div>
           {/* Pro */}
           <div className="pricing-card pro reveal active" style={{ transitionDelay: '0.1s' }}>
-            <div className="badge">Mais escolhido</div>
             <h3 className="plan-name">Pro</h3>
             <div className="plan-price">R$ 119<span>/mês</span></div>
             <ul className="plan-features">

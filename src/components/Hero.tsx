@@ -34,22 +34,12 @@ export default function Hero({ onOpenModal }: HeroProps) {
     };
   }, []);
 
-  const [isMobile, setIsMobile] = useState(false);
   const [isVideoComplete, setIsVideoComplete] = useState(false);
   const touchStartY = useRef(0);
   const currentProgress = useRef(0);
 
+  // Global scroll locking and rewind logic
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Mobile scroll locking and rewind logic
-  useEffect(() => {
-    if (!isMobile) return;
-
     if (!isVideoComplete) {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
@@ -61,6 +51,11 @@ export default function Hero({ onOpenModal }: HeroProps) {
     const handleScrollRewind = () => {
       if (isVideoComplete && window.scrollY <= 10) {
         setIsVideoComplete(false);
+        // Reset progress slightly so they can scroll back down to unlock
+        currentProgress.current = 0.95; 
+        if (videoRef.current) {
+          videoRef.current.currentTime = 0.95 * videoRef.current.duration;
+        }
       }
     };
 
@@ -70,44 +65,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
       document.documentElement.style.overflow = '';
       window.removeEventListener('scroll', handleScrollRewind);
     };
-  }, [isMobile, isVideoComplete]);
-
-  // Handle native scroll scrubbing (active on desktop, or mobile when unlocked)
-  useEffect(() => {
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (containerRef.current && videoRef.current && videoRef.current.duration) {
-            const { top, height } = containerRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            const scrollDistance = -top;
-            const scrollableHeight = height - windowHeight;
-
-            // NATIVE SCROLL SCRUBBING
-            // On mobile, if locked, we ignore this and use touch events
-            if (!(isMobile && !isVideoComplete)) {
-              if (scrollDistance >= 0 && scrollDistance <= scrollableHeight) {
-                const progress = scrollDistance / scrollableHeight;
-                videoRef.current.currentTime = progress * videoRef.current.duration;
-              } else if (scrollDistance < 0) {
-                videoRef.current.currentTime = 0;
-              } else if (scrollDistance > scrollableHeight) {
-                videoRef.current.currentTime = videoRef.current.duration;
-              }
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile, isVideoComplete]);
+  }, [isVideoComplete]);
 
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
@@ -115,20 +73,10 @@ export default function Hero({ onOpenModal }: HeroProps) {
     }
   };
 
-  // Mobile synthetic touch scrub
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!isMobile || isVideoComplete) return;
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isMobile || isVideoComplete || !videoRef.current || !videoRef.current.duration) return;
+  const advanceVideo = (diff: number, sensitivity: number) => {
+    if (isVideoComplete || !videoRef.current || !videoRef.current.duration) return;
     
-    const touchY = e.touches[0].clientY;
-    const diff = touchStartY.current - touchY; 
-    const swipeSensitivity = 0.003; 
-    let newProgress = currentProgress.current + (diff * swipeSensitivity);
-    
+    let newProgress = currentProgress.current + (diff * sensitivity);
     newProgress = Math.max(0, Math.min(1, newProgress));
     currentProgress.current = newProgress;
     
@@ -137,20 +85,33 @@ export default function Hero({ onOpenModal }: HeroProps) {
         videoRef.current.currentTime = newProgress * videoRef.current.duration;
         if (newProgress >= 0.98) {
           setIsVideoComplete(true);
-          // Auto-scroll the page past the 400vh wrapper so the native handler takes over correctly
-          if (containerRef.current) {
-            const { height } = containerRef.current.getBoundingClientRect();
-            window.scrollTo(0, height - window.innerHeight + 20);
-          }
         }
       }
     });
-    
+  };
+
+  // Synthetic touch scrub
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (isVideoComplete) return;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isVideoComplete) return;
+    const touchY = e.touches[0].clientY;
+    const diff = touchStartY.current - touchY; 
+    advanceVideo(diff, 0.003); // swipe sensitivity
     touchStartY.current = touchY;
   };
 
-  const scrollSpeed = 100;
-  const trackHeight = videoDuration > 0 ? `calc(100svh + ${videoDuration * scrollSpeed}px)` : '400svh';
+  // Synthetic wheel scrub for desktop
+  const handleWheel = (e: React.WheelEvent) => {
+    if (isVideoComplete) return;
+    advanceVideo(e.deltaY, 0.0005); // wheel sensitivity
+  };
+
+  // Track height is strictly 100svh. No white space below.
+  const trackHeight = '100svh';
 
   return (
     <div 
@@ -159,6 +120,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
       style={{ height: trackHeight }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
+      onWheel={handleWheel}
     >
       <header className="hero sticky-hero">
         <video
@@ -183,8 +145,8 @@ export default function Hero({ onOpenModal }: HeroProps) {
           </div>
         </div>
 
-        {/* Continue indicator for mobile swipe scrub */}
-        <div className={`hero-continue-indicator ${isMobile && isVideoComplete ? 'visible' : ''}`}>
+        {/* Continue indicator for swipe/scroll scrub */}
+        <div className={`hero-continue-indicator ${isVideoComplete ? 'visible' : ''}`}>
           <span>Continue</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="6 9 12 15 18 9"></polyline>

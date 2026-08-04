@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-interface HeroProps {
-  onOpenModal: () => void;
-}
-
-export default function Hero({ onOpenModal }: HeroProps) {
+export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -131,8 +127,7 @@ export default function Hero({ onOpenModal }: HeroProps) {
             <h1>A IA que entende seus exames. Você que cuida dos pacientes.</h1>
             <p>BG BodyGraph é o sistema clínico que lê PDFs de exames, calcula biomarcadores e gera insights nutricionais para que você foque no que realmente importa.</p>
             <div className="hero-cta">
-              <button className="btn btn-primary cta-white-text" onClick={onOpenModal}>Entrar na lista de espera</button>
-              <span className="hero-note">Sem cartão de crédito. Acesso antecipado com desconto.</span>
+              <a href="https://app.bodygraph.com.br/?onboarding=1" className="btn btn-primary cta-white-text">Começar agora</a>
             </div>
           </div>
         </div>

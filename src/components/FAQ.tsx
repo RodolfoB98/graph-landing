@@ -14,10 +14,6 @@ const faqs = [
     answer: "Sim. Usamos autenticação JWT, banco de dados com Row Level Security e os dados de cada profissional são isolados por padrão, seguindo as melhores práticas de segurança e LGPD."
   },
   {
-    question: "Posso usar em equipe?",
-    answer: "Sim. No plano Clínica você pode convidar outros profissionais para a sua organização, com controle de papéis (admin, profissional, secretária) e compartilhamento de agendas."
-  },
-  {
     question: "O que é o agente IA biomédico?",
     answer: "É um assistente contextualizado com os dados do paciente (exames, avaliações, histórico) que responde perguntas clínicas e ajuda na interpretação rápida de resultados complexos."
   }

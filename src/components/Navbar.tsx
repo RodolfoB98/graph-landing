@@ -16,11 +16,11 @@ export default function Navbar() {
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`} id="navbar">
       <div className="container nav-content">
         <a href="#" className="logo">
-          <img src="/logo.png" alt="BG BodyGraph" className="nav-logo-image" />
+          <img src="/logo.png" alt="BG BodyGraph" className="nav-logo-image" style={{ filter: 'brightness(0) invert(1)' }} />
         </a>
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-          <a href="https://app.bodygraph.com.br" className="btn btn-white" style={{ background: 'transparent', border: '1px solid var(--primary)', color: 'var(--primary)' }}>Entrar</a>
-          <a href="https://app.bodygraph.com.br/?onboarding=1" className="btn btn-primary">Assinar agora</a>
+          <a href="https://app.bodygraph.com.br" className="btn btn-white" style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.7)', color: '#fff' }}>Entrar</a>
+          <a href="https://app.bodygraph.com.br/?onboarding=1" className="btn" style={{ background: 'var(--primary)', color: '#fff', border: '1px solid rgba(255,255,255,0.2)' }}>Assinar agora</a>
         </div>
       </div>
     </nav>

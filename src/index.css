@@ -414,6 +414,10 @@ ul {
     color: #ffffff;
 }
 
+.pricing .section-header h2 {
+    color: #ffffff;
+}
+
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -530,7 +534,7 @@ ul {
 .pricing-note {
     text-align: center;
     margin-top: 40px;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
 }
 

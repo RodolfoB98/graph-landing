@@ -329,6 +329,7 @@ ul {
     padding: 20px 0 60px 0;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    touch-action: pan-y;
 }
 
 .carousel-track {
@@ -1125,7 +1126,7 @@ html, body {
         -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%) !important;
         overflow: hidden !important;
         padding: 0 !important;
-        touch-action: pan-x;
+        touch-action: pan-y;
     }
     .feature-card {
         flex: 0 0 280px !important;

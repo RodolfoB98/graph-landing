@@ -63,7 +63,23 @@ export default function Features() {
     setIsDragging(false);
   };
 
-  // Touch handlers on mobile were removed in favor of CSS :active
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - (containerRef.current?.offsetLeft || 0));
+    setScrollLeft(containerRef.current?.scrollLeft || 0);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    const x = e.touches[0].pageX - (containerRef.current.offsetLeft || 0);
+    const walk = (x - startX) * 1.5;
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   // Duplicate array 3 times for seamless infinite scroll
   const duplicatedFeatures = [...featuresData, ...featuresData, ...featuresData];
 
@@ -94,6 +110,9 @@ export default function Features() {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
       >
         <div className="carousel-track">

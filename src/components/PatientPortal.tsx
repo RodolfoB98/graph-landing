@@ -23,8 +23,8 @@ export default function PatientPortal() {
           </ul>
         </div>
         <div className="patient-portal-mockup reveal active" style={{ transitionDelay: '0.2s' }}>
-          <div className="phone-frame">
-            <img src="/plano-paciente.jpg" alt="Portal do Paciente" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '38px' }} />
+          <div className="mockup-fade-container">
+            <img src="/mockup-portal-paciente.png" alt="Portal do Paciente no celular" />
           </div>
         </div>
       </div>

@@ -977,22 +977,24 @@ ul {
     justify-content: center;
 }
 
-.phone-frame {
-    width: 375px;
-    height: 667px;
-    border-radius: 40px;
-    border: 2px solid #2e7d4f;
-    background-color: #0d1f17;
+.mockup-fade-container {
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: #52a875;
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    box-shadow: 0 40px 80px -20px rgba(46, 125, 79, 0.2);
-    position: relative;
-    overflow: hidden;
+    align-items: center;
+    width: 100%;
+}
+
+.mockup-fade-container img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    display: block;
+    -webkit-mask-image: radial-gradient(ellipse 75% 80% at center, black 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 75% 80% at center, black 55%, transparent 100%);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
 }
 
 @media (max-width: 992px) {
@@ -1296,11 +1298,8 @@ html, body {
     .patient-portal-container {
         grid-template-columns: 1fr !important;
     }
-    .patient-portal-mockup .phone-frame {
-        width: 100% !important;
-        max-width: 375px;
-        height: auto !important;
-        aspect-ratio: 375 / 667;
+    .patient-portal-mockup .mockup-fade-container img {
+        max-width: 320px;
     }
 }
 

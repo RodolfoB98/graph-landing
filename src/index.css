@@ -978,19 +978,17 @@ ul {
 }
 
 .mockup-fade-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
 }
 
 .mockup-fade-container img {
     width: 100%;
-    max-width: 420px;
     height: auto;
     display: block;
-    -webkit-mask-image: radial-gradient(ellipse 70% 75% at center, black 50%, transparent 100%);
-    mask-image: radial-gradient(ellipse 70% 75% at center, black 50%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at center, black 45%, transparent 95%);
+    mask-image: radial-gradient(ellipse 85% 85% at center, black 45%, transparent 95%);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
@@ -1298,8 +1296,8 @@ html, body {
     .patient-portal-container {
         grid-template-columns: 1fr !important;
     }
-    .patient-portal-mockup .mockup-fade-container img {
-        max-width: 380px;
+    .patient-portal-mockup .mockup-fade-container {
+        max-width: 400px;
     }
 }
 

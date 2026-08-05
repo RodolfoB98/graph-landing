@@ -986,11 +986,11 @@ ul {
 
 .mockup-fade-container img {
     width: 100%;
-    max-width: 360px;
+    max-width: 420px;
     height: auto;
     display: block;
-    -webkit-mask-image: radial-gradient(ellipse 75% 80% at center, black 55%, transparent 100%);
-    mask-image: radial-gradient(ellipse 75% 80% at center, black 55%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 75% at center, black 50%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 75% at center, black 50%, transparent 100%);
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
     -webkit-mask-size: 100% 100%;
@@ -1299,7 +1299,7 @@ html, body {
         grid-template-columns: 1fr !important;
     }
     .patient-portal-mockup .mockup-fade-container img {
-        max-width: 320px;
+        max-width: 380px;
     }
 }
 

@@ -63,18 +63,18 @@ export default function Hero() {
   }, [isVideoComplete]);
 
   const advanceVideo = (diff: number, sensitivity: number) => {
-    if (isVideoComplete || !videoRef.current || !videoRef.current.duration) return;
+    if (isVideoComplete) return;
     
     let newProgress = currentProgress.current + (diff * sensitivity);
     newProgress = Math.max(0, Math.min(1, newProgress));
     currentProgress.current = newProgress;
     
     window.requestAnimationFrame(() => {
-      if (videoRef.current) {
+      if (videoRef.current && videoRef.current.duration) {
         videoRef.current.currentTime = newProgress * videoRef.current.duration;
-        if (newProgress >= 0.98) {
-          setIsVideoComplete(true);
-        }
+      }
+      if (newProgress >= 0.98) {
+        setIsVideoComplete(true);
       }
     });
   };

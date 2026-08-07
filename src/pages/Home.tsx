@@ -1,5 +1,6 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
+import HumanContext from '../components/HumanContext';
 import SocialProof from '../components/SocialProof';
 import Features from '../components/Features';
 import PatientPortal from '../components/PatientPortal';
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
+      <HumanContext />
       <SocialProof />
       <Features />
       <PatientPortal />

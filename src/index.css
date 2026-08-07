@@ -214,6 +214,18 @@ ul {
     margin: 0;
 }
 
+.hero-eyebrow {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--medium);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
 .hero-content h1 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1.05;
@@ -995,12 +1007,44 @@ ul {
     mask-size: 100% 100%;
 }
 
+.human-context {
+    padding: 120px 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-light);
+}
+.human-context-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+.human-context-visual {
+    display: flex;
+    justify-content: center;
+}
+.human-context-content h2 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+.human-context-content p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 500px;
+}
+
 @media (max-width: 992px) {
     .patient-portal-container {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 60px;
     }
+    .human-context-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 48px;
+    }
+    .human-context-content p { margin: 0 auto; }
     .patient-portal-subtitle {
         margin: 0 auto 40px auto;
     }
@@ -1102,6 +1146,10 @@ html, body {
     }
 
     /* 3. TYPOGRAPHY SCALING */
+    .hero-eyebrow {
+        font-size: 0.7rem !important;
+        margin-bottom: 12px !important;
+    }
     h2 {
         font-size: clamp(1.6rem, 5vw, 2rem) !important;
     }

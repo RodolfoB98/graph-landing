@@ -124,10 +124,12 @@ export default function Hero() {
         <div className="hero-overlay"></div>
         <div className="container hero-grid-center">
           <div className="hero-content reveal active">
-            <h1>A IA que entende seus exames. Você que cuida dos pacientes.</h1>
-            <p>BG BodyGraph é o sistema clínico que lê PDFs de exames, calcula biomarcadores e gera insights nutricionais para que você foque no que realmente importa.</p>
+            <span className="hero-eyebrow">Plataforma para nutricionistas</span>
+            <h1>Todo o seu consultório de nutrição em uma só plataforma.</h1>
+            <p>Prescrição com base TACO, interpretação de exames por IA, avaliação nutricional e portal do paciente — integrados, do primeiro atendimento ao acompanhamento.</p>
             <div className="hero-cta">
-              <a href="https://app.bodygraph.com.br/?onboarding=1" className="btn btn-primary cta-white-text">Começar agora</a>
+              <a href="https://app.bodygraph.com.br/?onboarding=1" className="btn btn-primary cta-white-text">Comece grátis por 30 dias &rarr;</a>
+              <span className="hero-note">Sem cartão de crédito &middot; Cancele quando quiser</span>
             </div>
           </div>
         </div>

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
+const isAndroidUA = typeof navigator !== 'undefined' && /android/i.test(navigator.userAgent);
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -35,6 +37,13 @@ export default function Hero() {
 
   // Global scroll locking and rewind logic
   useEffect(() => {
+    if (isAndroidUA) {
+      // Free scroll on Android
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+      return;
+    }
+
     if (!isVideoComplete) {
       document.body.style.overflow = 'hidden';
       document.documentElement.style.overflow = 'hidden';
@@ -63,7 +72,7 @@ export default function Hero() {
   }, [isVideoComplete]);
 
   const advanceVideo = (diff: number, sensitivity: number) => {
-    if (isVideoComplete) return;
+    if (isAndroidUA || isVideoComplete) return;
     
     let newProgress = currentProgress.current + (diff * sensitivity);
     newProgress = Math.max(0, Math.min(1, newProgress));
@@ -81,12 +90,12 @@ export default function Hero() {
 
   // Synthetic touch scrub
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (isVideoComplete) return;
+    if (isAndroidUA || isVideoComplete) return;
     touchStartY.current = e.touches[0].clientY;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (isVideoComplete) return;
+    if (isAndroidUA || isVideoComplete) return;
     const touchY = e.touches[0].clientY;
     const diff = touchStartY.current - touchY; 
     advanceVideo(diff, 0.003); // swipe sensitivity
@@ -95,7 +104,7 @@ export default function Hero() {
 
   // Synthetic wheel scrub for desktop
   const handleWheel = (e: React.WheelEvent) => {
-    if (isVideoComplete) return;
+    if (isAndroidUA || isVideoComplete) return;
     advanceVideo(e.deltaY, 0.0005); // wheel sensitivity
   };
 
@@ -120,6 +129,8 @@ export default function Hero() {
           playsInline
           webkit-playsinline="true"
           preload="auto"
+          autoPlay={isAndroidUA}
+          loop={isAndroidUA}
         />
         <div className="hero-overlay"></div>
         <div className="container hero-grid-center">
@@ -135,12 +146,14 @@ export default function Hero() {
         </div>
 
         {/* Continue indicator for swipe/scroll scrub */}
-        <div className={`hero-continue-indicator ${isVideoComplete ? 'visible' : ''}`}>
-          <span>Continue</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </div>
+        {!isAndroidUA && (
+          <div className={`hero-continue-indicator ${isVideoComplete ? 'visible' : ''}`}>
+            <span>Continue</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+        )}
       </header>
     </div>
   );

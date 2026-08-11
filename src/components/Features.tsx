@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const featuresData = [
   {
@@ -43,6 +43,17 @@ export default function Features() {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const iconVideoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (iconVideoRef.current) {
+      iconVideoRef.current.defaultMuted = true;
+      iconVideoRef.current.muted = true;
+      iconVideoRef.current.play().catch(() => {
+        // Ignora erro se o navegador bloquear mesmo assim
+      });
+    }
+  }, []);
 
   // Mouse drag handlers (Desktop only)
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -92,6 +103,7 @@ export default function Features() {
 
         <div className="feature-showcase reveal active" style={{ transitionDelay: '0.1s' }}>
           <video
+            ref={iconVideoRef}
             src="/icons.mp4"
             autoPlay
             muted

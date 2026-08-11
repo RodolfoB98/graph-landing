@@ -97,6 +97,8 @@ export default function Features() {
             muted
             loop
             playsInline
+            webkit-playsinline="true"
+            preload="auto"
             className="feature-showcase-video"
           />
         </div>

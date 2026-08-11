@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import HumanContext from '../components/HumanContext';
 import SocialProof from '../components/SocialProof';
 import Features from '../components/Features';
+import ProductShowcase from '../components/ProductShowcase';
 import PatientPortal from '../components/PatientPortal';
 import Pricing from '../components/Pricing';
 import TargetAudience from '../components/TargetAudience';
@@ -18,6 +19,7 @@ export default function Home() {
       <HumanContext />
       <SocialProof />
       <Features />
+      <ProductShowcase />
       <PatientPortal />
       <Pricing />
       <TargetAudience />

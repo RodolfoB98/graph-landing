@@ -10,9 +10,7 @@ export default function HumanContext() {
         <div className="human-context-content reveal active" style={{ transitionDelay: '0.2s' }}>
           <h2>Feito por quem entende a rotina do consultório.</h2>
           <p>
-            Cada recurso do BG BodyGraph nasceu de uma dor real do dia a dia da nutrição 
-            da prescrição à interpretação de exames com inteligência artificial. 
-            Menos tempo em tarefa repetitiva, mais presença com o paciente.
+            Cada recurso do BG BodyGraph nasceu de uma dor real do consultório, da prescrição à interpretação de exames com inteligência artificial. Menos tempo em tarefa repetitiva, mais presença com o paciente.
           </p>
         </div>
       </div>

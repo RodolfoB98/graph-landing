@@ -61,22 +61,24 @@ export default function Navbar() {
           height: '100%'
         }}
       >
-        <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-          <img src="/logo.png" alt="BG Logo" style={{ filter: 'brightness(0) invert(1)', height: '36px', width: 'auto' }} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
-            <span style={{ fontFamily: 'Fraunces, serif', fontSize: '15px', fontWeight: 600, color: '#ffffff', lineHeight: 1 }}>BG</span>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', lineHeight: 1 }}>BODYGRAPH</span>
-          </div>
-        </a>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
+          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+            <img src="/logo.png" alt="BG Logo" style={{ filter: 'brightness(0) invert(1)', height: '36px', width: 'auto' }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+              <span style={{ fontFamily: 'Fraunces, serif', fontSize: '15px', fontWeight: 600, color: '#ffffff', lineHeight: 1 }}>BG</span>
+              <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', lineHeight: 1 }}>BODYGRAPH</span>
+            </div>
+          </a>
 
-        {windowWidth >= 900 && (
-          <nav style={{ display: 'flex', gap: '8px' }}>
-            <a href="#funcionalidades" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>Funcionalidades</a>
-            <a href="#produto" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>Como funciona</a>
-            <a href="#precos" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>Preços</a>
-            <a href="#faq" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>FAQ</a>
-          </nav>
-        )}
+          {windowWidth >= 900 && (
+            <nav style={{ display: 'flex', gap: '4px' }}>
+              <a href="#funcionalidades" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>Funcionalidades</a>
+              <a href="#produto" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>Como funciona</a>
+              <a href="#precos" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>Preços</a>
+              <a href="#faq" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = '#ffffff'} onMouseLeave={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'} onFocus={(e) => e.currentTarget.style.color = '#ffffff'} onBlur={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.72)'}>FAQ</a>
+            </nav>
+          )}
+        </div>
 
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
           <a href="https://app.bodygraph.com.br" className="btn" style={{ background: 'transparent', border: '1px solid rgba(255,255,255,0.28)', color: '#ffffff', padding: '12px 24px' }}>Entrar</a>

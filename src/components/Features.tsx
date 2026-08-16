@@ -1,5 +1,3 @@
-import { useState, useRef, useEffect } from 'react';
-
 const featuresData = [
   {
     icon: <path d="M9 3H15M10 9H14M3 19.5L6 15M21 19.5L18 15M6 21H18C19.1046 21 20 20.1046 20 19V10L14.6569 4.65685C14.2817 4.28172 13.773 4.07107 13.2426 4.07107H10.7574C10.227 4.07107 9.71825 4.28172 9.34315 4.65685L4 10V19C4 20.1046 4.89543 21 6 21Z" strokeLinecap="round" strokeLinejoin="round" />,
@@ -34,103 +32,21 @@ const featuresData = [
   {
     icon: <><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" strokeLinecap="round" strokeLinejoin="round"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></>,
     title: "Portal do Paciente",
-    desc: "Gere um link exclusivo para seu paciente acessar o plano alimentar, exames, evolução, fotos e diário — sem precisar de login."
+    desc: "Gere um link exclusivo para seu paciente acessar o plano alimentar, exames, evolução, fotos e diário (sem precisar de login)."
   }
 ];
 
 export default function Features() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const iconVideoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (iconVideoRef.current) {
-      iconVideoRef.current.defaultMuted = true;
-      iconVideoRef.current.muted = true;
-      iconVideoRef.current.play().catch(() => {
-        // Ignora erro se o navegador bloquear mesmo assim
-      });
-    }
-  }, []);
-
-  // Mouse drag handlers (Desktop only)
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setStartX(e.pageX - (containerRef.current?.offsetLeft || 0));
-    setScrollLeft(containerRef.current?.scrollLeft || 0);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !containerRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - (containerRef.current.offsetLeft || 0);
-    const walk = (x - startX) * 1.5; // Drag sensitivity
-    containerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleMouseUpOrLeave = () => {
-    setIsDragging(false);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - (containerRef.current?.offsetLeft || 0));
-    setScrollLeft(containerRef.current?.scrollLeft || 0);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !containerRef.current) return;
-    const x = e.touches[0].pageX - (containerRef.current.offsetLeft || 0);
-    const walk = (x - startX) * 1.5;
-    containerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
-
-  // Duplicate array 3 times for seamless infinite scroll
-  const duplicatedFeatures = [...featuresData, ...featuresData, ...featuresData];
-
   return (
     <section className="features">
       <div className="container">
         <div className="section-header reveal active">
           <h2>Cada detalhe do seu paciente, em um só lugar</h2>
+          <p className="features-subtitle">Sete módulos integrados. Um único fluxo de trabalho.</p>
         </div>
 
-        <div className="feature-showcase reveal active" style={{ transitionDelay: '0.1s' }}>
-          <video
-            ref={iconVideoRef}
-            src="/icons.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            webkit-playsinline="true"
-            preload="auto"
-            className="feature-showcase-video"
-          />
-        </div>
-      </div>
-
-      {/* Marquee Carousel - Full width */}
-      <div 
-        className="carousel-viewport"
-        ref={containerRef}
-        onMouseLeave={handleMouseUpOrLeave}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUpOrLeave}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-      >
-        <div className="carousel-track">
-          {duplicatedFeatures.map((item, index) => (
+        <div className="features-grid reveal active" style={{ transitionDelay: '0.1s' }}>
+          {featuresData.map((item, index) => (
             <div className="feature-card" key={index}>
               <div className="feature-icon">
                 <svg viewBox="0 0 24 24">{item.icon}</svg>

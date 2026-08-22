@@ -10,7 +10,6 @@ export default function Hero() {
   }, []);
 
   const isTablet = windowWidth < 980;
-  const isMobile = windowWidth < 640;
 
   return (
     <section 
@@ -53,6 +52,8 @@ export default function Hero() {
         
         {/* Container do Texto */}
         <div style={{
+          position: 'relative',
+          zIndex: 2,
           maxWidth: '1180px',
           margin: '0 auto',
           padding: '0 24px',
@@ -86,67 +87,33 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Coluna Direita (Composição com Foto Real) */}
-        <div style={{ 
-          display: isMobile ? 'none' : 'block',
-          position: isTablet ? 'relative' : 'absolute',
-          top: isTablet ? 'auto' : '50%',
-          right: isTablet ? 'auto' : '0',
-          transform: isTablet ? 'none' : 'translateY(-50%)',
-          width: isTablet ? '100%' : '52vw',
-          maxWidth: isTablet ? '560px' : '900px',
-          minWidth: isTablet ? '0' : '520px',
-          aspectRatio: '1920 / 1088',
-          margin: isTablet ? '0 auto' : '0',
-          padding: '0',
-          boxSizing: 'border-box'
-        }}>
-          
-          {/* CAMADA 1: Foto Base */}
-          <img
-            src="/HERO-BG-IPAD.png"
-            alt="iPad com o painel de exames do BG BodyGraph sobre uma mesa"
-            loading="eager"
-            decoding="async"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              display: 'block',
-              maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%)'
-            }}
-          />
-
-          {/* CAMADA 2: Print real recortado na forma exata da tela */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              clipPath: 'polygon(55.16% 30.42%, 87.97% 33.55%, 82.66% 84.19%, 49.17% 76.75%)',
-              WebkitClipPath: 'polygon(55.16% 30.42%, 87.97% 33.55%, 82.66% 84.19%, 49.17% 76.75%)',
-              overflow: 'hidden'
-            }}
-          >
+        {/* NOVA CAMADA DE IMAGEM (full-bleed à direita) */}
+        {!isTablet && (
+          <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
             <img
-              src="/HERO-EXAMES.jpg"
-              alt="Painel de exames do BG BodyGraph com biomarcadores e valores de referência"
+              src="/HERO-FINAL.png"
+              alt="iPad exibindo o painel de exames do BG BodyGraph sobre uma mesa"
               loading="eager"
               decoding="async"
               style={{
                 position: 'absolute',
-                top: '28%',
-                left: '48%',
-                width: '42%',
-                height: '58%',
+                top: 0,
+                right: 0,
+                height: '100%',
+                width: 'auto',
+                maxWidth: '68%',
                 objectFit: 'cover',
-                objectPosition: 'top'
+                objectPosition: 'right center',
+                display: 'block'
               }}
             />
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(90deg, #f7f9f6 0%, rgba(247,249,246,0.92) 18%, rgba(247,249,246,0.55) 34%, rgba(247,249,246,0.08) 52%, transparent 65%)'
+            }}></div>
           </div>
-        </div>
+        )}
 
       </div>
     </section>

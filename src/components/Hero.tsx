@@ -118,13 +118,13 @@ export default function Hero() {
           {/* FRAME DO IPAD (CSS puro) */}
           <div style={{
             background: 'linear-gradient(155deg, #3a3d3f 0%, #1c1e1f 55%, #2a2c2d 100%)',
-            borderRadius: '32px',
-            padding: '18px 18px 34px 18px',
-            transform: isTablet ? 'none' : 'perspective(1400px) rotateY(-8deg) rotateX(2deg)',
+            borderRadius: '28px',
+            padding: '14px 14px 14px 14px',
+            transform: isTablet ? 'none' : 'perspective(2000px) rotateY(-6deg) rotateX(2deg)',
             transformStyle: 'preserve-3d',
             boxShadow: '0 40px 90px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.06)',
             width: '100%',
-            maxWidth: '640px',
+            maxWidth: '100%',
             margin: '0 auto',
             position: 'relative',
             zIndex: 1
@@ -132,12 +132,12 @@ export default function Hero() {
             
             {/* CÂMERA */}
             <div style={{
-              width: '8px',
-              height: '8px',
+              width: '6px',
+              height: '6px',
               borderRadius: '50%',
               background: 'radial-gradient(circle, #4a4f52 0%, #101112 100%)',
               position: 'absolute',
-              top: '8px',
+              top: '4px',
               left: '50%',
               transform: 'translateX(-50%)',
               boxShadow: 'inset 0 0 2px rgba(0,0,0,0.8)'
@@ -146,10 +146,10 @@ export default function Hero() {
             {/* TELA */}
             <div style={{
               background: '#f7f9f6',
-              borderRadius: '18px',
+              borderRadius: '16px',
               overflow: 'hidden',
               position: 'relative',
-              aspectRatio: '4 / 3'
+              aspectRatio: '1.43 / 1'
             }}>
               <img
                 src="/HERO-EXAMES.jpg"
@@ -168,12 +168,12 @@ export default function Hero() {
 
             {/* BARRA HOME */}
             <div style={{
-              width: '90px',
-              height: '4px',
+              width: '80px',
+              height: '3px',
               borderRadius: '999px',
               background: 'rgba(255,255,255,0.35)',
               position: 'absolute',
-              bottom: '12px',
+              bottom: '5px',
               left: '50%',
               transform: 'translateX(-50%)'
             }}></div>

@@ -86,7 +86,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Coluna Direita (Imagem) */}
+        {/* Coluna Direita (Mockup iPad) */}
         <div style={{ 
           display: isMobile ? 'none' : 'block',
           position: isTablet ? 'relative' : 'absolute',
@@ -100,25 +100,84 @@ export default function Hero() {
           padding: isTablet ? '0 24px' : '0',
           boxSizing: 'border-box'
         }}>
-          <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden' }}>
-            <img
-              src="/HERO-EXAMES.jpg"
-              alt="Painel de exames do BG BodyGraph com biomarcadores e valores de referência"
-              loading="eager"
-              decoding="async"
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                borderRadius: '20px',
-                border: '1px solid rgba(255,255,255,0.14)',
-                boxShadow: '0 30px 70px rgba(0,0,0,0.32)',
-                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%), linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)',
-                WebkitMaskComposite: 'source-in',
-                maskImage: 'linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%), linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)',
-                maskComposite: 'intersect'
-              }}
-            />
+          
+          {/* GLOW ORGÂNICO POR TRÁS DO IPAD */}
+          <div style={{
+            position: 'absolute',
+            width: '120%',
+            height: '120%',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            background: 'radial-gradient(circle at 50% 45%, rgba(220,168,110,0.16) 0%, rgba(82,168,117,0.10) 38%, transparent 70%)',
+            filter: 'blur(40px)',
+            pointerEvents: 'none',
+            zIndex: 0
+          }}></div>
+
+          {/* FRAME DO IPAD (CSS puro) */}
+          <div style={{
+            background: 'linear-gradient(155deg, #3a3d3f 0%, #1c1e1f 55%, #2a2c2d 100%)',
+            borderRadius: '32px',
+            padding: '18px 18px 34px 18px',
+            transform: isTablet ? 'none' : 'perspective(1400px) rotateY(-8deg) rotateX(2deg)',
+            transformStyle: 'preserve-3d',
+            boxShadow: '0 40px 90px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.06)',
+            width: '100%',
+            maxWidth: '640px',
+            margin: '0 auto',
+            position: 'relative',
+            zIndex: 1
+          }}>
+            
+            {/* CÂMERA */}
+            <div style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, #4a4f52 0%, #101112 100%)',
+              position: 'absolute',
+              top: '8px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              boxShadow: 'inset 0 0 2px rgba(0,0,0,0.8)'
+            }}></div>
+
+            {/* TELA */}
+            <div style={{
+              background: '#f7f9f6',
+              borderRadius: '18px',
+              overflow: 'hidden',
+              position: 'relative',
+              aspectRatio: '4 / 3'
+            }}>
+              <img
+                src="/HERO-EXAMES.jpg"
+                alt="Painel de exames do BG BodyGraph com biomarcadores e valores de referência"
+                loading="eager"
+                decoding="async"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
+              />
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                pointerEvents: 'none',
+                background: 'linear-gradient(115deg, rgba(255,255,255,0.10) 0%, transparent 30%)'
+              }}></div>
+            </div>
+
+            {/* BARRA HOME */}
+            <div style={{
+              width: '90px',
+              height: '4px',
+              borderRadius: '999px',
+              background: 'rgba(255,255,255,0.35)',
+              position: 'absolute',
+              bottom: '12px',
+              left: '50%',
+              transform: 'translateX(-50%)'
+            }}></div>
+
           </div>
         </div>
 

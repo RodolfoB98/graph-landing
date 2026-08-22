@@ -93,16 +93,16 @@ export default function Hero() {
           top: isTablet ? 'auto' : '50%',
           right: isTablet ? 'auto' : '0',
           transform: isTablet ? 'none' : 'translateY(-50%)',
-          width: isTablet ? '100%' : '46vw',
-          maxWidth: isTablet ? '560px' : '780px',
-          minWidth: isTablet ? '0' : '460px',
+          width: isTablet ? '100%' : '52vw',
+          maxWidth: isTablet ? '560px' : '900px',
+          minWidth: isTablet ? '0' : '520px',
           margin: isTablet ? '0 auto' : '0',
           padding: isTablet ? '0 24px' : '0',
           boxSizing: 'border-box'
         }}>
-          <div style={{ position: 'relative', borderRadius: '14px', overflow: 'hidden' }}>
+          <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden' }}>
             <img
-              src="/HERO-EXAMES.png"
+              src="/HERO-EXAMES.jpg"
               alt="Painel de exames do BG BodyGraph com biomarcadores e valores de referência"
               loading="eager"
               decoding="async"
@@ -110,20 +110,15 @@ export default function Hero() {
                 width: '100%',
                 height: 'auto',
                 display: 'block',
-                borderRadius: '14px',
+                borderRadius: '20px',
                 border: '1px solid rgba(255,255,255,0.14)',
-                boxShadow: '0 24px 60px rgba(0,0,0,0.38)'
+                boxShadow: '0 30px 70px rgba(0,0,0,0.32)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%), linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)',
+                WebkitMaskComposite: 'source-in',
+                maskImage: 'linear-gradient(to bottom, transparent 0%, black 6%, black 92%, transparent 100%), linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)',
+                maskComposite: 'intersect'
               }}
             />
-            <div style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              height: '90px',
-              pointerEvents: 'none',
-              background: 'linear-gradient(180deg, rgba(11,26,18,0) 0%, rgba(11,26,18,0.55) 100%)'
-            }}></div>
           </div>
         </div>
 

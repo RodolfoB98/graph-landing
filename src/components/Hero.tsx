@@ -86,7 +86,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Coluna Direita (Mockup iPad) */}
+        {/* Coluna Direita (Composição com Foto Real) */}
         <div style={{ 
           display: isMobile ? 'none' : 'block',
           position: isTablet ? 'relative' : 'absolute',
@@ -96,88 +96,55 @@ export default function Hero() {
           width: isTablet ? '100%' : '52vw',
           maxWidth: isTablet ? '560px' : '900px',
           minWidth: isTablet ? '0' : '520px',
+          aspectRatio: '1920 / 1088',
           margin: isTablet ? '0 auto' : '0',
-          padding: isTablet ? '0 24px' : '0',
+          padding: '0',
           boxSizing: 'border-box'
         }}>
           
-          {/* GLOW ORGÂNICO POR TRÁS DO IPAD */}
-          <div style={{
-            position: 'absolute',
-            width: '120%',
-            height: '120%',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            background: 'radial-gradient(circle at 50% 45%, rgba(220,168,110,0.09) 0%, rgba(82,168,117,0.06) 38%, transparent 70%)',
-            filter: 'blur(40px)',
-            pointerEvents: 'none',
-            zIndex: 0
-          }}></div>
-
-          {/* FRAME DO IPAD (CSS puro) */}
-          <div style={{
-            background: 'linear-gradient(155deg, #3a3d3f 0%, #1c1e1f 55%, #2a2c2d 100%)',
-            borderRadius: '28px',
-            padding: '14px 14px 14px 14px',
-            transform: isTablet ? 'none' : 'perspective(2000px) rotateY(-6deg) rotateX(2deg)',
-            transformStyle: 'preserve-3d',
-            boxShadow: '0 40px 90px rgba(0,0,0,0.55), 0 10px 30px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.06)',
-            width: '100%',
-            maxWidth: '100%',
-            margin: '0 auto',
-            position: 'relative',
-            zIndex: 1
-          }}>
-            
-            {/* CÂMERA */}
-            <div style={{
-              width: '6px',
-              height: '6px',
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, #4a4f52 0%, #101112 100%)',
+          {/* CAMADA 1: Foto Base */}
+          <img
+            src="/HERO-BG-IPAD.png"
+            alt="iPad com o painel de exames do BG BodyGraph sobre uma mesa"
+            loading="eager"
+            decoding="async"
+            style={{
               position: 'absolute',
-              top: '4px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              boxShadow: 'inset 0 0 2px rgba(0,0,0,0.8)'
-            }}></div>
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              maskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 85% 85% at 50% 50%, black 60%, transparent 100%)'
+            }}
+          />
 
-            {/* TELA */}
-            <div style={{
-              background: '#f7f9f6',
-              borderRadius: '16px',
-              overflow: 'hidden',
-              position: 'relative',
-              aspectRatio: '1.43 / 1'
-            }}>
-              <img
-                src="/HERO-EXAMES.jpg"
-                alt="Painel de exames do BG BodyGraph com biomarcadores e valores de referência"
-                loading="eager"
-                decoding="async"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
-              />
-              <div style={{
+          {/* CAMADA 2: Print real recortado na forma exata da tela */}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              clipPath: 'polygon(55.16% 30.42%, 87.97% 33.55%, 82.66% 84.19%, 49.17% 76.75%)',
+              WebkitClipPath: 'polygon(55.16% 30.42%, 87.97% 33.55%, 82.66% 84.19%, 49.17% 76.75%)',
+              overflow: 'hidden'
+            }}
+          >
+            <img
+              src="/HERO-EXAMES.jpg"
+              alt="Painel de exames do BG BodyGraph com biomarcadores e valores de referência"
+              loading="eager"
+              decoding="async"
+              style={{
                 position: 'absolute',
-                inset: 0,
-                pointerEvents: 'none',
-                background: 'linear-gradient(115deg, rgba(255,255,255,0.10) 0%, transparent 30%)'
-              }}></div>
-            </div>
-
-            {/* BARRA HOME */}
-            <div style={{
-              width: '80px',
-              height: '3px',
-              borderRadius: '999px',
-              background: 'rgba(255,255,255,0.35)',
-              position: 'absolute',
-              bottom: '5px',
-              left: '50%',
-              transform: 'translateX(-50%)'
-            }}></div>
-
+                top: '28%',
+                left: '48%',
+                width: '42%',
+                height: '58%',
+                objectFit: 'cover',
+                objectPosition: 'top'
+              }}
+            />
           </div>
         </div>
 

@@ -210,19 +210,18 @@ ul {
     text-transform: uppercase;
     color: var(--medium);
     margin-bottom: 20px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .hero-content h1 {
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     line-height: 1.05;
     margin-bottom: 24px;
-    color: #ffffff;
+    color: #0f3521;
 }
 
 .hero-content p {
     font-size: 1.125rem;
-    color: rgba(255, 255, 255, 0.95);
+    color: #3d5c39;
     margin-bottom: 40px;
 }
 
@@ -235,7 +234,7 @@ ul {
 
 .hero-note {
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(15, 53, 33, 0.55);
     display: flex;
     align-items: center;
     justify-content: flex-start;

@@ -15,7 +15,7 @@ export default function Hero() {
   return (
     <section 
       style={{
-        background: '#0b1a12',
+        background: '#f7f9f6',
         position: 'relative',
         overflow: 'hidden',
         minHeight: isTablet ? 'auto' : '92vh',
@@ -29,7 +29,7 @@ export default function Hero() {
         inset: 0,
         pointerEvents: 'none',
         zIndex: 0,
-        background: 'radial-gradient(900px 600px at 78% 12%, rgba(46,125,79,0.28), transparent 62%), radial-gradient(700px 500px at 18% 88%, rgba(82,168,117,0.10), transparent 60%), linear-gradient(180deg, #0b1a12 0%, #10261a 100%)'
+        background: 'radial-gradient(760px 520px at 82% 8%, rgba(220,168,110,0.16), transparent 62%), radial-gradient(640px 480px at 12% 92%, rgba(82,168,117,0.12), transparent 60%), radial-gradient(900px 700px at 50% 50%, rgba(255,255,255,0.8), transparent 70%)'
       }}></div>
       
       <div style={{
@@ -37,7 +37,7 @@ export default function Hero() {
         inset: 0,
         pointerEvents: 'none',
         zIndex: 1,
-        opacity: 0.05,
+        opacity: 0.025,
         mixBlendMode: 'overlay',
         backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\'/%3E%3C/filter%3E%3Crect width=\'140\' height=\'140\' filter=\'url(%23n)\'/%3E%3C/svg%3E")'
       }}></div>
@@ -81,7 +81,7 @@ export default function Hero() {
               >
                 Comece grátis por 30 dias &rarr;
               </a>
-              <span className="hero-note" style={{ color: 'rgba(255,255,255,0.55)' }}>Sem cartão de crédito &middot; Cancele quando quiser</span>
+              <span className="hero-note">Sem cartão de crédito &middot; Cancele quando quiser</span>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default function Hero() {
             top: '50%',
             left: '50%',
             transform: 'translate(-50%, -50%)',
-            background: 'radial-gradient(circle at 50% 45%, rgba(220,168,110,0.16) 0%, rgba(82,168,117,0.10) 38%, transparent 70%)',
+            background: 'radial-gradient(circle at 50% 45%, rgba(220,168,110,0.09) 0%, rgba(82,168,117,0.06) 38%, transparent 70%)',
             filter: 'blur(40px)',
             pointerEvents: 'none',
             zIndex: 0

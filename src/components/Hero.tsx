@@ -17,7 +17,7 @@ export default function Hero() {
         background: '#f7f9f6',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: isTablet ? 'auto' : '92vh',
+        minHeight: isTablet ? 'auto' : '100vh',
         padding: isTablet ? '120px 0 80px' : '0',
         display: 'flex',
         alignItems: 'center'
@@ -89,30 +89,45 @@ export default function Hero() {
 
         {/* NOVA CAMADA DE IMAGEM (full-bleed à direita) */}
         {!isTablet && (
-          <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
-            <img
-              src="/HERO-FINAL.png"
-              alt="iPad exibindo o painel de exames do BG BodyGraph sobre uma mesa"
-              loading="eager"
-              decoding="async"
-              style={{
-                position: 'absolute',
-                top: 0,
-                right: 0,
-                height: '100%',
-                width: 'auto',
-                maxWidth: '68%',
-                objectFit: 'cover',
-                objectPosition: 'right center',
-                display: 'block'
-              }}
-            />
+          <>
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(90deg, #f7f9f6 0%, rgba(247,249,246,0.92) 18%, rgba(247,249,246,0.55) 34%, rgba(247,249,246,0.08) 52%, transparent 65%)'
+              zIndex: 1,
+              pointerEvents: 'none',
+              background: 'linear-gradient(90deg, #f7f9f6 0%, rgba(247,249,246,0.85) 26%, rgba(247,249,246,0.3) 42%, transparent 55%)'
             }}></div>
-          </div>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              width: '72%',
+              zIndex: 1,
+              pointerEvents: 'none',
+              overflow: 'hidden'
+            }}>
+              <img
+                src="/HERO-FINAL.png"
+                alt="iPad exibindo o painel de exames do BG BodyGraph sobre uma mesa"
+                loading="eager"
+                decoding="async"
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  minWidth: '100%',
+                  minHeight: '100%',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'cover',
+                  maskImage: 'radial-gradient(ellipse 78% 72% at 62% 50%, black 42%, transparent 82%)',
+                  WebkitMaskImage: 'radial-gradient(ellipse 78% 72% at 62% 50%, black 42%, transparent 82%)'
+                }}
+              />
+            </div>
+          </>
         )}
 
       </div>

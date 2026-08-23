@@ -120,7 +120,7 @@ export default function Pricing() {
               <span style={priceStyle}>R$ 59</span>
               <span style={suffixStyle}>/mês</span>
             </div>
-            <p style={legendStyle}>Oferta de fundador, 10 primeiras vagas. Preço mantido enquanto a assinatura estiver ativa.</p>
+            <p style={legendStyle}>Oferta de fundador, vagas limitadas. Preço mantido enquanto a assinatura estiver ativa.</p>
             
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px' }}>
               <li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '12px' }}>{checkIcon} <span style={itemStyle}>Pacientes ilimitados</span></li>
@@ -184,7 +184,7 @@ export default function Pricing() {
         </div>
 
         <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.6)', textAlign: 'center', margin: '40px auto 0', maxWidth: '560px' }}>
-          Depois de fechadas as 10 vagas de fundador, o PRO passa a R$ 99/mês ou R$ 89/mês no plano anual.
+          Encerrada a oferta de fundador, o PRO passa a R$ 99/mês ou R$ 89/mês no plano anual.
         </p>
       </div>
     </section>

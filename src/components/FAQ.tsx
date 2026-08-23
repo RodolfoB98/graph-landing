@@ -27,7 +27,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="faq">
+    <section className="faq" id="faq">
       <div className="container faq-container">
         <div className="section-header reveal active">
           <h2>Perguntas Frequentes</h2>

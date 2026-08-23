@@ -38,7 +38,7 @@ const featuresData = [
 
 export default function Features() {
   return (
-    <section className="features">
+    <section className="features" id="funcionalidades">
       <div className="container">
         <div className="section-header reveal active">
           <h2>Cada detalhe do seu paciente, em um só lugar</h2>

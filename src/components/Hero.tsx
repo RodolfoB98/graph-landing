@@ -14,10 +14,14 @@ export default function Hero() {
   return (
     <section 
       style={{
-        background: '#f7f9f6',
+        backgroundColor: '#f7f9f6',
+        backgroundImage: isTablet ? 'none' : 'url(/HERO-FINAL.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center right',
+        backgroundRepeat: 'no-repeat',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: isTablet ? 'auto' : '100vh',
+        minHeight: '92vh',
         padding: isTablet ? '120px 0 80px' : '0',
         display: 'flex',
         alignItems: 'center'
@@ -27,19 +31,21 @@ export default function Hero() {
         position: 'absolute',
         inset: 0,
         pointerEvents: 'none',
-        zIndex: 0,
-        background: 'radial-gradient(760px 520px at 82% 8%, rgba(220,168,110,0.16), transparent 62%), radial-gradient(640px 480px at 12% 92%, rgba(82,168,117,0.12), transparent 60%), radial-gradient(900px 700px at 50% 50%, rgba(255,255,255,0.8), transparent 70%)'
-      }}></div>
-      
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        pointerEvents: 'none',
         zIndex: 1,
         opacity: 0.025,
         mixBlendMode: 'overlay',
         backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\'/%3E%3C/filter%3E%3Crect width=\'140\' height=\'140\' filter=\'url(%23n)\'/%3E%3C/svg%3E")'
       }}></div>
+
+      {!isTablet && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 1,
+          pointerEvents: 'none',
+          background: 'linear-gradient(90deg, rgba(247,249,246,0.72) 0%, rgba(247,249,246,0.45) 30%, rgba(247,249,246,0.12) 48%, transparent 60%)'
+        }}></div>
+      )}
 
       <div className="hero-wrapper reveal active" style={{ 
         position: 'relative', 
@@ -86,49 +92,6 @@ export default function Hero() {
             </div>
           </div>
         </div>
-
-        {/* NOVA CAMADA DE IMAGEM (full-bleed à direita) */}
-        {!isTablet && (
-          <>
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              zIndex: 1,
-              pointerEvents: 'none',
-              background: 'linear-gradient(90deg, #f7f9f6 0%, rgba(247,249,246,0.85) 26%, rgba(247,249,246,0.3) 42%, transparent 55%)'
-            }}></div>
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              right: 0,
-              bottom: 0,
-              width: '72%',
-              zIndex: 1,
-              pointerEvents: 'none',
-              overflow: 'hidden'
-            }}>
-              <img
-                src="/HERO-FINAL.png"
-                alt="iPad exibindo o painel de exames do BG BodyGraph sobre uma mesa"
-                loading="eager"
-                decoding="async"
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  minWidth: '100%',
-                  minHeight: '100%',
-                  width: 'auto',
-                  height: 'auto',
-                  objectFit: 'cover',
-                  maskImage: 'radial-gradient(ellipse 78% 72% at 62% 50%, black 42%, transparent 82%)',
-                  WebkitMaskImage: 'radial-gradient(ellipse 78% 72% at 62% 50%, black 42%, transparent 82%)'
-                }}
-              />
-            </div>
-          </>
-        )}
 
       </div>
     </section>

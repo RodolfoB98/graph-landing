@@ -1,6 +1,6 @@
 export default function ProductShowcase() {
   return (
-    <section className="product-showcase">
+    <section className="product-showcase" id="produto">
       <div className="container">
         <div className="section-header">
           <h2>Veja o BG BodyGraph por dentro</h2>

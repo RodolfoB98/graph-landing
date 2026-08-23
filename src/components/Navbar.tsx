@@ -85,7 +85,36 @@ export default function Navbar() {
           )}
         </div>
 
-        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+          <a
+            href="https://www.instagram.com/bg.bodygraph/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram do BG BodyGraph"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '40px',
+              height: '40px',
+              borderRadius: '999px',
+              color: scrolled ? '#ffffff' : '#0f3521',
+              textDecoration: 'none',
+              transition: 'background 0.2s ease, color 0.2s ease'
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = scrolled ? 'rgba(255,255,255,0.12)' : 'rgba(15,53,33,0.08)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+            onFocus={(e) => { e.currentTarget.style.background = scrolled ? 'rgba(255,255,255,0.12)' : 'rgba(15,53,33,0.08)'; }}
+            onBlur={(e) => { e.currentTarget.style.background = 'transparent'; }}
+          >
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" strokeWidth="2"
+                 strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
           <a href="https://app.bodygraph.com.br" className="btn" style={{ background: 'transparent', border: `1px solid ${btnBorder}`, color: textColor, padding: '12px 24px' }}>Entrar</a>
           <a 
             href="https://app.bodygraph.com.br/?onboarding=1" 

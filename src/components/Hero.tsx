@@ -14,10 +14,10 @@ export default function Hero() {
   return (
     <section 
       style={{
-        backgroundColor: '#f7f9f6',
-        backgroundImage: isTablet ? 'none' : 'url(/HERO-FINAL.png)',
+        backgroundColor: '#0f3521',
+        backgroundImage: 'url(/hero-bodygraph.webp)',
         backgroundSize: 'cover',
-        backgroundPosition: 'center right',
+        backgroundPosition: isTablet ? 'center 20%' : 'center right',
         backgroundRepeat: 'no-repeat',
         position: 'relative',
         overflow: 'hidden',
@@ -37,15 +37,15 @@ export default function Hero() {
         backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\'/%3E%3C/filter%3E%3Crect width=\'140\' height=\'140\' filter=\'url(%23n)\'/%3E%3C/svg%3E")'
       }}></div>
 
-      {!isTablet && (
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 1,
-          pointerEvents: 'none',
-          background: 'linear-gradient(90deg, rgba(247,249,246,0.72) 0%, rgba(247,249,246,0.45) 30%, rgba(247,249,246,0.12) 48%, transparent 60%)'
-        }}></div>
-      )}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        zIndex: 1,
+        pointerEvents: 'none',
+        background: isTablet
+          ? 'linear-gradient(180deg, rgba(10,20,14,0.35) 0%, rgba(10,20,14,0.82) 55%, rgba(10,20,14,0.93) 100%)'
+          : 'linear-gradient(90deg, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.72) 32%, rgba(10,20,14,0.34) 55%, rgba(10,20,14,0.05) 78%)'
+      }}></div>
 
       <div className="hero-wrapper reveal active" style={{ 
         position: 'relative', 
@@ -66,10 +66,28 @@ export default function Hero() {
           width: '100%',
           boxSizing: 'border-box'
         }}>
-          <div className="hero-content" style={{ maxWidth: isTablet ? '100%' : '560px', textAlign: 'left' }}>
-            <span className="hero-eyebrow">Plataforma para nutricionistas</span>
-            <h1 style={{ fontSize: 'clamp(2.3rem, 4.6vw, 4.14rem)', lineHeight: 1.05, fontFamily: 'Fraunces, serif' }}>Todo o seu consultório de nutrição em uma só plataforma.</h1>
-            <p>Prescrição com base TACO, interpretação de exames por IA, avaliação nutricional e portal do paciente integrados, do primeiro atendimento ao acompanhamento.</p>
+          <div className="hero-content" style={{ maxWidth: isTablet ? '100%' : '520px', textAlign: 'left' }}>
+            <span className="hero-eyebrow" style={{ color: '#8fd4a8' }}>Plataforma para nutricionistas</span>
+            <h1 style={{
+              fontSize: 'clamp(2.6rem, 5.6vw, 5rem)',
+              lineHeight: 1.02,
+              fontFamily: 'Fraunces, serif',
+              color: '#ffffff',
+              letterSpacing: '-0.015em',
+              marginBottom: '24px'
+            }}>
+              <span style={{ display: 'block' }}>Menos digitação.</span>
+              <span style={{ display: 'block' }}>Mais nutrição.</span>
+            </h1>
+            <p style={{
+              color: 'rgba(255,255,255,0.88)',
+              maxWidth: '440px',
+              fontSize: 'clamp(1rem, 1.15vw, 1.125rem)',
+              lineHeight: 1.55,
+              marginBottom: '40px'
+            }}>
+              Prescrição com base TACO, interpretação de exames por IA, avaliação nutricional e portal do paciente — do primeiro atendimento ao acompanhamento.
+            </p>
             <div className="hero-cta">
               <a 
                 href="https://app.bodygraph.com.br/?onboarding=1" 
@@ -88,7 +106,7 @@ export default function Hero() {
               >
                 Comece grátis por 30 dias &rarr;
               </a>
-              <span className="hero-note">Sem cartão de crédito &middot; Cancele quando quiser</span>
+              <span className="hero-note" style={{ color: 'rgba(255,255,255,0.62)' }}>Sem cartão de crédito &middot; Cancele quando quiser</span>
             </div>
           </div>
         </div>

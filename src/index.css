@@ -246,7 +246,7 @@ ul {
     display: block;
     width: 8px;
     height: 8px;
-    background-color: var(--medium);
+    background-color: #8fd4a8;
     border-radius: 50%;
 }
 

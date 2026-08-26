@@ -1144,19 +1144,7 @@ html, body {
         text-align: center !important;
         width: 100% !important;
     }
-    .hero-content {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 16px !important;
-        width: 100% !important;
-    }
-
     /* 3. TYPOGRAPHY SCALING */
-    .hero-eyebrow {
-        font-size: 0.7rem !important;
-        margin-bottom: 12px !important;
-    }
     h2 {
         font-size: clamp(1.6rem, 5vw, 2rem) !important;
     }

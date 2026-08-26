@@ -15,16 +15,18 @@ export default function Hero() {
     <section 
       style={{
         backgroundColor: '#0f3521',
-        backgroundImage: 'url(/hero-bodygraph.webp)',
+        backgroundImage: isTablet
+          ? 'url(/hero-xicara-1280.webp)'
+          : 'url(/hero-xicara-2560.webp)',
         backgroundSize: 'cover',
-        backgroundPosition: isTablet ? 'center 20%' : 'center right',
+        backgroundPosition: isTablet ? '70% center' : 'center right',
         backgroundRepeat: 'no-repeat',
         position: 'relative',
         overflow: 'hidden',
-        minHeight: '92vh',
+        minHeight: isTablet ? '88svh' : '92vh',
         padding: isTablet ? '120px 0 80px' : '0',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: isTablet ? 'flex-end' : 'center'
       }}
     >
       <div style={{
@@ -69,7 +71,7 @@ export default function Hero() {
           <div className="hero-content" style={{ maxWidth: isTablet ? '100%' : '520px', textAlign: 'left' }}>
             <span className="hero-eyebrow" style={{ color: '#8fd4a8' }}>Plataforma para nutricionistas</span>
             <h1 style={{
-              fontSize: 'clamp(2.6rem, 5.6vw, 5rem)',
+              fontSize: 'clamp(2.05rem, 5.6vw, 5rem)',
               lineHeight: 1.02,
               fontFamily: 'Fraunces, serif',
               color: '#ffffff',

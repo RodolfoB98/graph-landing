@@ -22,10 +22,10 @@ export default function Navbar() {
     };
   }, []);
 
-  const textColor = scrolled ? '#ffffff' : '#0f3521';
-  const textMuted = scrolled ? 'rgba(255,255,255,0.72)' : 'rgba(15,53,33,0.72)';
-  const logoSub = scrolled ? 'rgba(255,255,255,0.6)' : 'rgba(15,53,33,0.6)';
-  const btnBorder = scrolled ? 'rgba(255,255,255,0.28)' : 'rgba(15,53,33,0.28)';
+  const textColor = '#ffffff';
+  const textMuted = 'rgba(255,255,255,0.78)';
+  const logoSub = 'rgba(255,255,255,0.65)';
+  const btnBorder = 'rgba(255,255,255,0.32)';
 
   const navLinkStyle = {
     fontFamily: 'Inter, sans-serif',
@@ -55,8 +55,20 @@ export default function Navbar() {
         boxShadow: 'none'
       }}
     >
+      {!scrolled && (
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '150px',
+          pointerEvents: 'none',
+          background: 'linear-gradient(180deg, rgba(8,18,12,0.55) 0%, rgba(8,18,12,0.22) 55%, transparent 100%)'
+        }}></div>
+      )}
       <div 
         style={{
+          position: 'relative',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -68,7 +80,7 @@ export default function Navbar() {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <img src="/logo.png" alt="BG Logo" style={{ filter: scrolled ? 'brightness(0) invert(1)' : 'none', height: '36px', width: 'auto' }} />
+            <img src="/logo.png" alt="BG Logo" style={{ filter: 'brightness(0) invert(1)', height: '36px', width: 'auto' }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
               <span style={{ fontFamily: 'Fraunces, serif', fontSize: '15px', fontWeight: 600, color: textColor, lineHeight: 1 }}>BG</span>
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: logoSub, lineHeight: 1 }}>BODYGRAPH</span>
@@ -98,13 +110,13 @@ export default function Navbar() {
               width: '40px',
               height: '40px',
               borderRadius: '999px',
-              color: scrolled ? '#ffffff' : '#0f3521',
+              color: '#ffffff',
               textDecoration: 'none',
               transition: 'background 0.2s ease, color 0.2s ease'
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = scrolled ? 'rgba(255,255,255,0.12)' : 'rgba(15,53,33,0.08)'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
-            onFocus={(e) => { e.currentTarget.style.background = scrolled ? 'rgba(255,255,255,0.12)' : 'rgba(15,53,33,0.08)'; }}
+            onFocus={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; }}
             onBlur={(e) => { e.currentTarget.style.background = 'transparent'; }}
           >
             <svg width="19" height="19" viewBox="0 0 24 24" fill="none"

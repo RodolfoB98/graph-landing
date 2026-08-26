@@ -16,10 +16,10 @@ export default function Hero() {
       style={{
         backgroundColor: '#0f3521',
         backgroundImage: isTablet
-          ? 'url(/hero-xicara-1280.webp)'
-          : 'url(/hero-xicara-2560.webp)',
+          ? 'url(/hero-mesa-1280.webp)'
+          : 'url(/hero-mesa-2560.webp)',
         backgroundSize: 'cover',
-        backgroundPosition: isTablet ? '70% center' : 'center right',
+        backgroundPosition: '50% 82%',
         backgroundRepeat: 'no-repeat',
         position: 'relative',
         overflow: 'hidden',

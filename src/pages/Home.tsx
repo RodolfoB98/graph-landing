@@ -1,6 +1,5 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import HumanContext from '../components/HumanContext';
 import SocialProof from '../components/SocialProof';
 import Features from '../components/Features';
 import ProductShowcase from '../components/ProductShowcase';
@@ -16,7 +15,6 @@ export default function Home() {
     <>
       <Navbar />
       <Hero />
-      <HumanContext />
       <SocialProof />
       <Features />
       <ProductShowcase />

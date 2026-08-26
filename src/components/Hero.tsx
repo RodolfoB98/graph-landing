@@ -88,7 +88,7 @@ export default function Hero() {
               lineHeight: 1.55,
               marginBottom: '40px'
             }}>
-              Prescrição com base TACO, interpretação de exames por IA, avaliação nutricional e portal do paciente — do primeiro atendimento ao acompanhamento.
+              Prescrição com base TACO, interpretação de exames por IA, avaliação nutricional e portal do paciente do primeiro atendimento ao acompanhamento.
             </p>
             <div className="hero-cta">
               <a 

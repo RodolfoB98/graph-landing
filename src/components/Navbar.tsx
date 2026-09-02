@@ -99,7 +99,7 @@ export default function Navbar() {
 
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <a
-            href="https://www.instagram.com/bg.bodygraph/"
+            href="https://www.instagram.com/bodygraph.com.br/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram do BG BodyGraph"

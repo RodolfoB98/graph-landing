@@ -94,7 +94,7 @@ export default function Pricing() {
 
             <div style={{ marginTop: 'auto' }}>
               <a 
-                href="https://www.instagram.com/bodygraph.com.br/" 
+                href="https://www.instagram.com/bg.bodygraph/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 style={btnOutlineStyle}
@@ -166,7 +166,7 @@ export default function Pricing() {
 
             <div style={{ marginTop: 'auto' }}>
               <a 
-                href="https://www.instagram.com/bodygraph.com.br/" 
+                href="https://www.instagram.com/bg.bodygraph/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 style={btnOutlineStyle}

@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "graph-landing-zeta.vercel.app" }],
+      "destination": "https://www.bodygraph.com.br/:path*",
+      "permanent": true
+    }
+  ]
+}

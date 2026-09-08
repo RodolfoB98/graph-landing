@@ -1,0 +1,18 @@
+# BodyGraph
+
+> Plataforma SaaS brasileira de gestão clínica para nutricionistas. Reúne
+> prescrição dietética, avaliação de composição corporal, interpretação de
+> exames laboratoriais, agenda e portal do paciente em uma única ferramenta.
+
+## Sobre
+- Público: nutricionistas licenciados e estudantes de nutrição no Brasil.
+- Planos: gratuito para estudantes; plano PRO para profissionais.
+- Site: https://www.bodygraph.com.br/
+- Aplicação: https://app.bodygraph.com.br/
+- Contato: contato@bodygraph.com.br
+
+## Recursos
+- Prescrição dietética com base TACO/UNICAMP e medidas caseiras.
+- Avaliação de composição corporal (dobras cutâneas, IMC, RCQ, bioimpedância).
+- Interpretação de exames laboratoriais com apoio de IA.
+- Agenda, controle financeiro e portal do paciente.

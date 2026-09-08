@@ -69,17 +69,19 @@ export default function Hero() {
           boxSizing: 'border-box'
         }}>
           <div className="hero-content" style={{ maxWidth: isTablet ? '100%' : '520px', textAlign: 'left' }}>
-            <span className="hero-eyebrow" style={{ color: '#8fd4a8' }}>Plataforma para nutricionistas</span>
-            <h1 style={{
-              fontSize: 'clamp(2.05rem, 5.6vw, 5rem)',
-              lineHeight: 1.02,
-              fontFamily: 'Fraunces, serif',
-              color: '#ffffff',
-              letterSpacing: '-0.015em',
-              marginBottom: '24px'
-            }}>
-              <span style={{ display: 'block' }}>Menos digitação.</span>
-              <span style={{ display: 'block' }}>Mais nutrição.</span>
+            <h1 style={{ marginBottom: '24px' }}>
+              <span className="hero-eyebrow" style={{ color: '#8fd4a8' }}>Plataforma para nutricionistas</span>
+              <span className="hero-title" style={{
+                display: 'block',
+                fontSize: 'clamp(2.05rem, 5.6vw, 5rem)',
+                lineHeight: 1.02,
+                fontFamily: 'Fraunces, serif',
+                color: '#ffffff',
+                letterSpacing: '-0.015em'
+              }}>
+                <span style={{ display: 'block' }}>Menos digitação.</span>
+                <span style={{ display: 'block' }}>Mais nutrição.</span>
+              </span>
             </h1>
             <p style={{
               color: 'rgba(255,255,255,0.88)',

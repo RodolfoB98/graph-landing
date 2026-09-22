@@ -7,7 +7,7 @@ const faqs = [
   },
   {
     question: "Preciso instalar alguma coisa?",
-    answer: "Não. O BG BodyGraph é 100% web, acessa pelo navegador em qualquer dispositivo, seja no seu computador do consultório ou no tablet/celular."
+    answer: "Não. O BodyGraph é 100% web, acessa pelo navegador em qualquer dispositivo, seja no seu computador do consultório ou no tablet/celular."
   },
   {
     question: "Meus dados são seguros?",

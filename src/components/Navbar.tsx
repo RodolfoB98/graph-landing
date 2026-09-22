@@ -80,7 +80,7 @@ export default function Navbar() {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <img src="/logo.png" alt="BG Logo" style={{ filter: 'brightness(0) invert(1)', height: '36px', width: 'auto' }} />
+            <img src="/logo.png" alt="BodyGraph Logo" style={{ filter: 'brightness(0) invert(1)', height: '36px', width: 'auto' }} />
             <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
               <span style={{ fontFamily: 'Fraunces, serif', fontSize: '15px', fontWeight: 600, color: textColor, lineHeight: 1 }}>BG</span>
               <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '9px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: logoSub, lineHeight: 1 }}>BODYGRAPH</span>
@@ -102,7 +102,7 @@ export default function Navbar() {
             href="https://www.instagram.com/bg.bodygraph/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram do BG BodyGraph"
+            aria-label="Instagram do BodyGraph"
             style={{
               display: 'flex',
               alignItems: 'center',

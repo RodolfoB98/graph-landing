@@ -3,7 +3,7 @@ export default function ProductShowcase() {
     <section className="product-showcase" id="produto">
       <div className="container">
         <div className="section-header">
-          <h2>Veja o BG BodyGraph por dentro</h2>
+          <h2>Veja o BodyGraph por dentro</h2>
           <p className="showcase-subtitle">Ferramentas reais, pensadas para o fluxo de trabalho do nutricionista.</p>
         </div>
 

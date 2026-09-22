@@ -1,10 +1,21 @@
 import './index.css'
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.tsx'
 
-createRoot(document.getElementById('root')!).render(
+const container = document.getElementById('root')!
+
+const app = (
   <StrictMode>
     <App />
-  </StrictMode>,
+  </StrictMode>
 )
+
+// Em produção o HTML já vem pré-renderizado pelo prerender.js, então hidratamos.
+// Em `npm run dev` o container tem apenas o comentário <!--app-html-->, sem elementos,
+// então criamos a root normalmente e o dev server continua funcionando igual.
+if (container.firstElementChild) {
+  hydrateRoot(container, app)
+} else {
+  createRoot(container).render(app)
+}

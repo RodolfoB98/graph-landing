@@ -28,20 +28,120 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "BodyGraph",
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Web",
-      "url": "https://www.bodygraph.com.br/",
-      "inLanguage": "pt-BR",
-      "description": "Plataforma de gestão clínica para nutricionistas: prescrição dietética, avaliação de composição corporal, interpretação de exames laboratoriais, agenda e portal do paciente.",
-      "publisher": {
-        "@type": "Organization",
-        "name": "BodyGraph",
-        "url": "https://www.bodygraph.com.br/",
-        "logo": "https://www.bodygraph.com.br/logo.png",
-        "sameAs": ["https://www.instagram.com/bodygraph.com.br/"]
-      }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://www.bodygraph.com.br/#organization",
+          "name": "BodyGraph",
+          "alternateName": ["BodyGraph Nutrição", "BodyGraph Brasil"],
+          "url": "https://www.bodygraph.com.br/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://www.bodygraph.com.br/#logo",
+            "url": "https://www.bodygraph.com.br/logo.png",
+            "contentUrl": "https://www.bodygraph.com.br/logo.png",
+            "caption": "BodyGraph"
+          },
+          "image": { "@id": "https://www.bodygraph.com.br/#logo" },
+          "description": "Empresa brasileira de tecnologia para nutrição clínica, desenvolvedora do BodyGraph, plataforma de gestão para nutricionistas.",
+          "areaServed": { "@type": "Country", "name": "Brasil" },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Vitória",
+            "addressRegion": "ES",
+            "addressCountry": "BR"
+          },
+          "sameAs": [
+            "https://www.instagram.com/bodygraph.com.br/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.bodygraph.com.br/#website",
+          "url": "https://www.bodygraph.com.br/",
+          "name": "BodyGraph",
+          "alternateName": "BodyGraph Software para Nutricionistas",
+          "publisher": { "@id": "https://www.bodygraph.com.br/#organization" },
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://www.bodygraph.com.br/#software",
+          "name": "BodyGraph",
+          "alternateName": "BodyGraph Nutrição",
+          "applicationCategory": "HealthApplication",
+          "applicationSubCategory": "Software para nutricionistas",
+          "operatingSystem": "Web",
+          "url": "https://www.bodygraph.com.br/",
+          "inLanguage": "pt-BR",
+          "description": "Plataforma de gestão clínica para nutricionistas: prescrição dietética, avaliação de composição corporal, interpretação de exames laboratoriais, agenda e portal do paciente.",
+          "featureList": [
+            "Leitura de Exames por IA",
+            "Avaliação Nutricional",
+            "Prescrição Dietética",
+            "Agenda Integrada",
+            "Agente IA Biomédico",
+            "Questionários Pré-Consulta",
+            "Portal do Paciente"
+          ],
+          "publisher": { "@id": "https://www.bodygraph.com.br/#organization" },
+          "offers": {
+            "@type": "Offer",
+            "price": "59",
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock",
+            "url": "https://www.bodygraph.com.br/"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://www.bodygraph.com.br/#webpage",
+          "url": "https://www.bodygraph.com.br/",
+          "name": "Software para Nutricionistas | BodyGraph",
+          "isPartOf": { "@id": "https://www.bodygraph.com.br/#website" },
+          "about": { "@id": "https://www.bodygraph.com.br/#software" },
+          "primaryImageOfPage": { "@id": "https://www.bodygraph.com.br/#logo" },
+          "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.bodygraph.com.br/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Como funciona a extração de exames por PDF?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Você faz o upload do PDF do laboratório, nossa IA lê e extrai automaticamente todos os biomarcadores, já com os valores de referência por sexo e faixa etária."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Preciso instalar alguma coisa?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Não. O BG BodyGraph é 100% web, acessa pelo navegador em qualquer dispositivo, seja no seu computador do consultório ou no tablet/celular."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Meus dados são seguros?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim. Usamos autenticação JWT, banco de dados com Row Level Security e os dados de cada profissional são isolados por padrão, seguindo as melhores práticas de segurança e LGPD."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "O que é o agente IA biomédico?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "É um assistente contextualizado com os dados do paciente (exames, avaliações, histórico) que responde perguntas clínicas e ajuda na interpretação rápida de resultados complexos."
+              }
+            }
+          ]
+        }
+      ]
     }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">

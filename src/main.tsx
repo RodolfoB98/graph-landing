@@ -7,7 +7,7 @@ const container = document.getElementById('root')!
 
 const app = (
   <StrictMode>
-    <App />
+    <App url={window.location.pathname} />
   </StrictMode>
 )
 

@@ -81,10 +81,10 @@ export default function Navbar() {
           </a>
 
           <nav className="bg-nav-links">
-            <a href="#funcionalidades" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>Funcionalidades</a>
-            <a href="#produto" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>Como funciona</a>
-            <a href="#precos" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>Preços</a>
-            <a href="#faq" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>FAQ</a>
+            <a href="/#funcionalidades" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>Funcionalidades</a>
+            <a href="/#produto" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>Como funciona</a>
+            <a href="/#precos" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>Preços</a>
+            <a href="/#faq" style={navLinkStyle} onMouseEnter={(e) => e.currentTarget.style.color = textColor} onMouseLeave={(e) => e.currentTarget.style.color = textMuted} onFocus={(e) => e.currentTarget.style.color = textColor} onBlur={(e) => e.currentTarget.style.color = textMuted}>FAQ</a>
           </nav>
         </div>
 

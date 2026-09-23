@@ -1444,3 +1444,189 @@ html, body {
     order: -1;
   }
 }
+
+/* ===================================================================
+   Calculadora de IMC (Etapa 3)
+   =================================================================== */
+
+.calc-page {
+  padding-top: 72px;
+  background: var(--bg-global);
+}
+
+.calc-hero {
+  background: linear-gradient(135deg, #0f3521 0%, #1a5535 55%, #2e7d4f 100%);
+  color: #ffffff;
+  padding: 64px 0 48px;
+  text-align: center;
+}
+
+.calc-hero h1 {
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.calc-hero-subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.calc-tool {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  padding: 48px 0;
+}
+
+.calc-tool-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: end;
+  max-width: 800px;
+}
+
+.calc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.calc-field label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.calc-input {
+  border: 1px solid var(--border-light);
+  background: var(--bg-global);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text-main);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calc-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 125, 79, 0.1);
+}
+
+.calc-result {
+  grid-column: 1 / -1;
+  background: var(--bg-global);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.calc-result-value {
+  font-family: 'Fraunces', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.calc-result-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.calc-result-placeholder {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.calc-info {
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.calc-info h2 {
+  margin-bottom: 20px;
+}
+
+.calc-info p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 720px;
+  margin-bottom: 16px;
+}
+
+.calc-formula {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  color: var(--text-main);
+  margin: 16px 0;
+}
+
+.calc-table {
+  width: 100%;
+  max-width: 560px;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.calc-table th,
+.calc-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+
+.calc-table th {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.calc-table td {
+  color: var(--text-muted);
+}
+
+.calc-cta {
+  background: var(--primary);
+  padding: 56px 0;
+  text-align: center;
+}
+
+.calc-cta-container {
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.calc-cta p {
+  color: #ffffff;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.calc-cta-btn {
+  background: #ffffff;
+  color: var(--primary);
+}
+
+@media (max-width: 767px) {
+  .calc-tool-container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,11 +1,8 @@
-import Home from './pages/Home'
+import { resolveRoute } from './routes';
 
-function App() {
-  return (
-    <>
-      <Home />
-    </>
-  )
+function App({ url }: { url: string }) {
+  const { Component } = resolveRoute(url);
+  return <Component />;
 }
 
-export default App
+export default App;

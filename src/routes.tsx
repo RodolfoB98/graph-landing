@@ -21,7 +21,7 @@ export const routes: RouteDef[] = [
   {
     path: '/calculadora-imc',
     Component: CalculadoraIMC,
-    title: 'Calculadora de IMC online e gratuita | BodyGraph',
+    title: 'Calculadora de IMC com classificação por faixa etária | BodyGraph',
     description:
       'Calcule o IMC e veja a classificação da OMS. Ferramenta gratuita para nutricionistas e estudantes, com a fórmula, a tabela de faixas e as limitações do índice.',
   },

@@ -1721,3 +1721,76 @@ html, body {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+/* ===================================================================
+   Ferramentas gratuitas na home (Etapa 3c)
+   =================================================================== */
+
+.ferramentas {
+  padding: 80px 0;
+  background-color: var(--surface);
+}
+
+.ferramentas-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: #5c7a58;
+  max-width: 560px;
+  margin: 16px auto 56px auto;
+  text-align: center;
+  line-height: 1.55;
+}
+
+.ferramentas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.ferramentas-card {
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 14px;
+  border: 1px solid #e6ede4;
+  transition: transform 0.4s var(--spring-easing), box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.ferramentas-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -15px rgba(46, 125, 79, 0.08);
+}
+
+.ferramentas-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.ferramentas-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.ferramentas-link {
+  color: #2e7d4f;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.ferramentas-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 899px) {
+  .ferramentas-grid {
+    grid-template-columns: 1fr;
+  }
+}

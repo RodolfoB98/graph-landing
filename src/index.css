@@ -1630,3 +1630,94 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===================================================================
+   Calculadora de Pollock 7 dobras + ajustes de IMC por faixa etaria
+   (Etapa 3b)
+   =================================================================== */
+
+.calc-field-full {
+  grid-column: 1 / -1;
+}
+
+.calc-field-legend {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.calc-radio-group {
+  display: flex;
+  gap: 24px;
+}
+
+.calc-radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.calc-radio input {
+  accent-color: var(--primary);
+  width: 16px;
+  height: 16px;
+}
+
+.calc-dobras-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.calc-result-pollock {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  text-align: center;
+}
+
+.calc-result-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+}
+
+.calc-note {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+.calc-list {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-width: 720px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.calc-list li {
+  margin-bottom: 12px;
+}
+
+.calc-list strong {
+  color: var(--text-main);
+}
+
+@media (max-width: 767px) {
+  .calc-dobras-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .calc-result-pollock {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,37 +1,22 @@
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-
-type Faixa = {
-  label: string;
-  min: number;
-  max: number;
-};
-
-const FAIXAS: Faixa[] = [
-  { label: 'Baixo peso', min: -Infinity, max: 18.5 },
-  { label: 'Peso adequado', min: 18.5, max: 25 },
-  { label: 'Sobrepeso', min: 25, max: 30 },
-  { label: 'Obesidade grau I', min: 30, max: 35 },
-  { label: 'Obesidade grau II', min: 35, max: 40 },
-  { label: 'Obesidade grau III', min: 40, max: Infinity },
-];
-
-function classificar(imc: number): string {
-  const faixa = FAIXAS.find((f) => imc >= f.min && imc < f.max);
-  return faixa ? faixa.label : '';
-}
+import { classIMC } from '../lib/antropometria';
 
 export default function CalculadoraIMC() {
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
+  const [idade, setIdade] = useState('');
 
   const pesoNum = parseFloat(peso.replace(',', '.'));
-  const alturaNum = parseFloat(altura.replace(',', '.'));
-  const alturaM = alturaNum > 3 ? alturaNum / 100 : alturaNum;
+  const alturaCm = parseFloat(altura.replace(',', '.'));
+  const alturaM = alturaCm / 100;
+  const idadeNum = idade ? parseFloat(idade.replace(',', '.')) : undefined;
 
   const imc =
     pesoNum > 0 && alturaM > 0 ? pesoNum / (alturaM * alturaM) : null;
+
+  const classificacao = imc !== null && isFinite(imc) ? classIMC(imc, idadeNum) : null;
 
   return (
     <>
@@ -39,10 +24,10 @@ export default function CalculadoraIMC() {
       <main className="calc-page">
         <section className="calc-hero">
           <div className="container">
-            <h1>Calculadora de IMC</h1>
+            <h1>Calculadora de IMC com classificação por faixa etária</h1>
             <p className="calc-hero-subtitle">
-              Calcule seu Índice de Massa Corporal e veja a classificação da Organização Mundial da Saúde (OMS)
-              a partir do seu peso e altura.
+              Uma ferramenta de triagem, não de diagnóstico. Informe peso, altura e, se quiser, a
+              idade do paciente para ver a classificação ajustada por faixa etária.
             </p>
           </div>
         </section>
@@ -50,7 +35,7 @@ export default function CalculadoraIMC() {
         <section className="calc-tool">
           <div className="container calc-tool-container">
             <div className="calc-field">
-              <label htmlFor="peso">Peso (kg)</label>
+              <label htmlFor="peso">Peso do paciente (kg)</label>
               <input
                 id="peso"
                 type="number"
@@ -62,23 +47,35 @@ export default function CalculadoraIMC() {
               />
             </div>
             <div className="calc-field">
-              <label htmlFor="altura">Altura (em metros ou cm)</label>
+              <label htmlFor="altura">Altura do paciente (cm)</label>
               <input
                 id="altura"
                 type="number"
                 inputMode="decimal"
-                placeholder="Ex: 1.70 ou 170"
+                placeholder="Ex: 169"
                 value={altura}
                 onChange={(e) => setAltura(e.target.value)}
                 className="calc-input"
               />
             </div>
+            <div className="calc-field">
+              <label htmlFor="idade">Idade do paciente (anos, opcional)</label>
+              <input
+                id="idade"
+                type="number"
+                inputMode="decimal"
+                placeholder="Ex: 35"
+                value={idade}
+                onChange={(e) => setIdade(e.target.value)}
+                className="calc-input"
+              />
+            </div>
 
             <div className="calc-result">
-              {imc !== null && isFinite(imc) ? (
+              {imc !== null && isFinite(imc) && classificacao ? (
                 <>
                   <span className="calc-result-value">{imc.toFixed(1)}</span>
-                  <span className="calc-result-label">{classificar(imc)}</span>
+                  <span className="calc-result-label">{classificacao.label}</span>
                 </>
               ) : (
                 <span className="calc-result-placeholder">Preencha peso e altura para calcular</span>
@@ -95,8 +92,23 @@ export default function CalculadoraIMC() {
             </p>
             <p className="calc-formula">IMC = peso ÷ (altura × altura)</p>
             <p>
-              Exemplo: uma pessoa com 70 kg e 1,70 m de altura tem IMC = 70 ÷ (1,70 × 1,70) = 70 ÷ 2,89 = 24,2,
-              o que corresponde a peso adequado.
+              Exemplo: um paciente com 70 kg e 1,70 m de altura tem IMC = 70 ÷ (1,70 × 1,70) = 70 ÷ 2,89 = 24,2,
+              o que corresponde a peso adequado na faixa adulta.
+            </p>
+          </div>
+        </section>
+
+        <section className="calc-info">
+          <div className="container">
+            <h2>Por que a faixa etária muda a classificação</h2>
+            <p>
+              Em idosos, o critério de Lipschitz desloca a faixa adequada para 22 a 27, porque IMC
+              baixo em idoso está associado a risco nutricional, e não a saúde metabólica.
+            </p>
+            <p>
+              Em menores de 18 anos, a avaliação correta é por percentil ou escore-z conforme as
+              curvas de crescimento. A faixa exibida aqui é uma referência simplificada para triagem
+              rápida e não substitui essas curvas.
             </p>
           </div>
         </section>
@@ -138,6 +150,10 @@ export default function CalculadoraIMC() {
                 </tr>
               </tbody>
             </table>
+            <p className="calc-note">
+              Faixa etária 60+: a referência acima muda, com a faixa adequada deslocada para IMC
+              entre 22 e 27 (critério de Lipschitz), conforme explicado na seção anterior.
+            </p>
           </div>
         </section>
 
@@ -149,7 +165,9 @@ export default function CalculadoraIMC() {
               pessoas muito musculosas, que podem ter um IMC elevado sem excesso de gordura corporal. O índice
               também não informa como a gordura está distribuída pelo corpo. Por isso, na prática clínica, o
               IMC costuma ser combinado com dobras cutâneas, circunferências e relação cintura-quadril para
-              uma avaliação mais completa.
+              uma avaliação mais completa — veja a{' '}
+              <a href="/calculadora-pollock-7-dobras">calculadora de Pollock 7 dobras</a> para estimar o
+              percentual de gordura.
             </p>
           </div>
         </section>

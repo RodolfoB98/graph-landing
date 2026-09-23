@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import Home from './pages/Home';
 import CalculadoraIMC from './pages/CalculadoraIMC';
+import CalculadoraPollock from './pages/CalculadoraPollock';
 
 export type RouteDef = {
   path: string;
@@ -23,6 +24,13 @@ export const routes: RouteDef[] = [
     title: 'Calculadora de IMC online e gratuita | BodyGraph',
     description:
       'Calcule o IMC e veja a classificação da OMS. Ferramenta gratuita para nutricionistas e estudantes, com a fórmula, a tabela de faixas e as limitações do índice.',
+  },
+  {
+    path: '/calculadora-pollock-7-dobras',
+    Component: CalculadoraPollock,
+    title: 'Calculadora de Pollock 7 dobras | BodyGraph',
+    description:
+      'Calcule o percentual de gordura pelo protocolo de Jackson e Pollock de 7 dobras, com classificação por sexo e idade. Ferramenta gratuita para nutricionistas.',
   },
 ];
 

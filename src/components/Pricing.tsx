@@ -1,16 +1,4 @@
-import { useState, useEffect } from 'react';
-
 export default function Pricing() {
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const isMobile = windowWidth < 900;
-
   const cardStyle = {
     background: '#ffffff',
     borderRadius: '18px',
@@ -26,7 +14,6 @@ export default function Pricing() {
     ...cardStyle,
     border: '2px solid #52a875',
     position: 'relative' as const,
-    order: isMobile ? -1 : 0,
   };
 
   const eyebrowStyle = { fontFamily: 'Inter, sans-serif', fontSize: '12px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#2e7d4f' };
@@ -110,7 +97,7 @@ export default function Pricing() {
           </div>
 
           {/* Card 2: PRO */}
-          <div style={proCardStyle} className="reveal active">
+          <div style={proCardStyle} className="reveal active bg-pricing-card-pro">
             <div style={{ position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#2e7d4f', color: '#ffffff', fontFamily: 'Inter, sans-serif', fontSize: '12px', fontWeight: 600, padding: '5px 16px', borderRadius: '999px', whiteSpace: 'nowrap' }}>
               Oferta de fundador
             </div>

@@ -1,34 +1,6 @@
-import { useState, useEffect } from 'react';
-
 export default function Hero() {
-  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const isTablet = windowWidth < 980;
-
   return (
-    <section 
-      style={{
-        backgroundColor: '#0f3521',
-        backgroundImage: isTablet
-          ? 'url(/hero-mesa-1280.webp)'
-          : 'url(/hero-mesa-2560.webp)',
-        backgroundSize: 'cover',
-        backgroundPosition: '50% 82%',
-        backgroundRepeat: 'no-repeat',
-        position: 'relative',
-        overflow: 'hidden',
-        minHeight: isTablet ? '88svh' : '92vh',
-        padding: isTablet ? '120px 0 80px' : '0',
-        display: 'flex',
-        alignItems: isTablet ? 'flex-end' : 'center'
-      }}
-    >
+    <section className="bg-hero">
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -39,23 +11,12 @@ export default function Hero() {
         backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'3\'/%3E%3C/filter%3E%3Crect width=\'140\' height=\'140\' filter=\'url(%23n)\'/%3E%3C/svg%3E")'
       }}></div>
 
-      <div style={{
-        position: 'absolute',
-        inset: 0,
-        zIndex: 1,
-        pointerEvents: 'none',
-        background: isTablet
-          ? 'linear-gradient(180deg, rgba(10,20,14,0.35) 0%, rgba(10,20,14,0.82) 55%, rgba(10,20,14,0.93) 100%)'
-          : 'linear-gradient(90deg, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.72) 32%, rgba(10,20,14,0.34) 55%, rgba(10,20,14,0.05) 78%)'
-      }}></div>
+      <div className="bg-hero-overlay"></div>
 
-      <div className="hero-wrapper reveal active" style={{ 
-        position: 'relative', 
+      <div className="hero-wrapper bg-hero-layout reveal active" style={{
+        position: 'relative',
         zIndex: 2,
-        width: '100%',
-        display: isTablet ? 'flex' : 'block',
-        flexDirection: isTablet ? 'column' : 'row',
-        gap: isTablet ? '40px' : '0'
+        width: '100%'
       }}>
         
         {/* Container do Texto */}
@@ -68,7 +29,7 @@ export default function Hero() {
           width: '100%',
           boxSizing: 'border-box'
         }}>
-          <div className="hero-content" style={{ maxWidth: isTablet ? '100%' : '520px', textAlign: 'left' }}>
+          <div className="hero-content bg-hero-text" style={{ textAlign: 'left' }}>
             <h1 style={{ marginBottom: '24px' }}>
               <span className="hero-eyebrow" style={{ color: '#8fd4a8' }}>Plataforma para nutricionistas</span>
               <span className="hero-title" style={{

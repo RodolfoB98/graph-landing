@@ -1359,3 +1359,88 @@ html, body {
 #faq {
     scroll-margin-top: 88px;
 }
+
+/* ===================================================================
+   Layout responsivo em CSS (correção de hidratação SSR, Etapa 2c)
+   Estas regras substituem condicionais de windowWidth em JavaScript.
+   Breakpoints: 980px (Hero) e 900px (Navbar e Pricing), os mesmos
+   valores que estavam no JS.
+   =================================================================== */
+
+/* --- Hero --- */
+.bg-hero {
+  background-color: #0f3521;
+  background-image: url(/hero-mesa-2560.webp);
+  background-size: cover;
+  background-position: 50% 82%;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  min-height: 92vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.bg-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(10,20,14,0.88) 0%, rgba(10,20,14,0.72) 32%, rgba(10,20,14,0.34) 55%, rgba(10,20,14,0.05) 78%);
+}
+
+.bg-hero-layout {
+  display: block;
+  gap: 0;
+}
+
+.bg-hero-text {
+  max-width: 520px;
+}
+
+@media (max-width: 979px) {
+  .bg-hero {
+    background-image: url(/hero-mesa-1280.webp);
+    min-height: 88svh;
+    padding: 120px 0 80px;
+    align-items: flex-end;
+  }
+
+  .bg-hero-overlay {
+    background: linear-gradient(180deg, rgba(10,20,14,0.35) 0%, rgba(10,20,14,0.82) 55%, rgba(10,20,14,0.93) 100%);
+  }
+
+  .bg-hero-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .bg-hero-text {
+    max-width: 100%;
+  }
+}
+
+/* --- Navbar --- */
+.bg-nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+@media (max-width: 899px) {
+  .bg-nav-links {
+    display: none;
+  }
+}
+
+/* --- Pricing --- */
+.bg-pricing-card-pro {
+  order: 0;
+}
+
+@media (max-width: 899px) {
+  .bg-pricing-card-pro {
+    order: -1;
+  }
+}

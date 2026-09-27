@@ -19,7 +19,7 @@ export default function Pricing() {
   const eyebrowStyle = { fontFamily: 'Inter, sans-serif', fontSize: '12px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: '#2e7d4f' };
   const priceStyle = { fontFamily: 'Fraunces, serif', fontSize: '40px', fontWeight: 600, color: '#0f3521', lineHeight: 1 };
   const suffixStyle = { fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#8aab80', marginLeft: '4px' };
-  const strikethroughStyle = { fontFamily: 'Fraunces, serif', fontSize: '22px', color: '#b5cdb0', textDecoration: 'line-through', marginRight: '10px' };
+
   const legendStyle = { fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#8aab80', margin: '10px 0 24px', lineHeight: 1.5 };
   const itemStyle = { fontFamily: 'Inter, sans-serif', fontSize: '14.5px', color: '#3d5c39', lineHeight: 1.5 };
   const footerStyle = { fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#8aab80', lineHeight: 1.5, marginTop: '14px', textAlign: 'center' as const };
@@ -99,15 +99,14 @@ export default function Pricing() {
           {/* Card 2: PRO */}
           <div style={proCardStyle} className="reveal active bg-pricing-card-pro">
             <div style={{ position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)', background: '#2e7d4f', color: '#ffffff', fontFamily: 'Inter, sans-serif', fontSize: '12px', fontWeight: 600, padding: '5px 16px', borderRadius: '999px', whiteSpace: 'nowrap' }}>
-              Oferta de fundador
+              Economize até 19% no anual
             </div>
             <span style={eyebrowStyle}>BODYGRAPH PRO</span>
             <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '12px' }}>
-              <span style={strikethroughStyle}>R$ 99</span>
-              <span style={priceStyle}>R$ 59</span>
+              <span style={priceStyle}>R$ 99</span>
               <span style={suffixStyle}>/mês</span>
             </div>
-            <p style={legendStyle}>Oferta de fundador, vagas limitadas. Preço mantido enquanto a assinatura estiver ativa.</p>
+            <p style={legendStyle}>No plano anual: R$ 84,90/mês com fidelidade de 12 meses, ou R$ 79,90/mês pagando à vista (R$ 958,80).</p>
             
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px' }}>
               <li style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', marginBottom: '12px' }}>{checkIcon} <span style={itemStyle}>Pacientes ilimitados</span></li>
@@ -131,7 +130,7 @@ export default function Pricing() {
               >
                 Começar grátis por 30 dias
               </a>
-              <p style={footerStyle}>30 dias sem cartão de crédito. Depois, R$ 59/mês se quiser continuar. Cancele quando quiser.</p>
+              <p style={footerStyle}>30 dias sem cartão de crédito. Depois, escolha o plano: a partir de R$ 79,90/mês.</p>
             </div>
           </div>
 
@@ -139,7 +138,7 @@ export default function Pricing() {
           <div style={cardStyle} className="reveal active">
             <span style={eyebrowStyle}>RECÉM-FORMADO</span>
             <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '12px' }}>
-              <span style={priceStyle}>R$ 29,50</span>
+              <span style={priceStyle}>R$ 49,50</span>
               <span style={suffixStyle}>/mês</span>
             </div>
             <p style={legendStyle}>50% de desconto nos 12 primeiros meses para quem se formou há menos de um ano.</p>
@@ -164,14 +163,14 @@ export default function Pricing() {
               >
                 Solicitar no Instagram
               </a>
-              <p style={footerStyle}>Envie uma mensagem com o nome da faculdade e o ano de formatura. Ao fim dos 12 meses, a assinatura passa para o valor vigente do plano PRO.</p>
+              <p style={footerStyle}>Envie uma mensagem com o nome da faculdade e o ano de formatura. Ao fim dos 12 meses, a assinatura passa para R$ 99/mês.</p>
             </div>
           </div>
 
         </div>
 
         <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.6)', textAlign: 'center', margin: '40px auto 0', maxWidth: '560px' }}>
-          Encerrada a oferta de fundador, o PRO passa a R$ 99/mês ou R$ 89/mês no plano anual.
+          Preços em reais. Cancele quando quiser no plano mensal; o anual com cobrança mensal tem fidelidade de 12 meses.
         </p>
       </div>
     </section>
